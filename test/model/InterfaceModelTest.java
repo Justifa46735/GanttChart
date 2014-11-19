@@ -258,6 +258,12 @@ public class InterfaceModelTest
         public void openFile(File xmlFile) throws SAXException, IOException, ParserConfigurationException, ParseException
         {
         }
+
+        @Override
+        public String getVersion()
+        {
+            return "1.0.0";
+        }
     }
     
 }

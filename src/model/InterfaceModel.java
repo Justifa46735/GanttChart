@@ -28,6 +28,7 @@ public abstract class InterfaceModel
     protected final List<String> elementName;
     private String projektName;
     private boolean dataSaved;
+    protected String version;
 
     public InterfaceModel()
     {
@@ -82,4 +83,6 @@ public abstract class InterfaceModel
     public abstract void saveFile(File xmlFile) throws ParserConfigurationException, TransformerException;
 
     public abstract void openFile(File xmlFile) throws SAXException, IOException, ParserConfigurationException, ParseException;
+    
+    public abstract String getVersion();
 }

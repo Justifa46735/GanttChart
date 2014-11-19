@@ -644,6 +644,12 @@ public class InterfaceViewTest
         public void updateChart(IntervalCategoryDataset dataset, String title)
         {
         }
+
+        @Override
+        public String getVersion()
+        {
+            return "1.0.0";
+        }
     }
     
 }

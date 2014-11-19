@@ -10,6 +10,7 @@ import org.jfree.data.category.IntervalCategoryDataset;
 public class GanttChartFrame
         extends InterfaceView
 {
+    private final String version = "1.0.0";
     private JFreeChart chart;
     private final String[] columnNames;
 
@@ -48,5 +49,11 @@ public class GanttChartFrame
         chart.setTextAntiAlias(true);
         super.getScrPnlMainFrmRight().setViewportView(pnlChartPanel);
         super.getScrPnlMainFrmRight().repaint();
+    }
+
+    @Override
+    public String getVersion()
+    {
+        return version;
     }
 }

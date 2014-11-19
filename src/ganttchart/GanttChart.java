@@ -17,6 +17,7 @@ import controller.ShowInpTaskCntrl;
 import controller.InterfaceController;
 import controller.NewProjCntrl;
 import controller.OpenFileCntrl;
+import controller.OpenInfoFrmCntrl;
 import controller.PropAbortCntrl;
 import controller.PropConfirmCntrl;
 import controller.OpenPropFrmCntrl;
@@ -47,23 +48,24 @@ public class GanttChart
         InterfaceView frmMainFrame = new GanttChartFrame();
         InterfaceModel mdlDataHandle = new DataModel();
 
-        InterfaceController cntlOpenFile = new OpenFileCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlSaveFile = new SaveFileCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlSaveAs = new SaveAsCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlZoomNormal = new ZoomNormalCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlZoomIn = new ZoomInCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlZoomOut = new ZoomOutCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlChart = new UpdateDataCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlExit = new ExitAppCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlNewProjekt = new NewProjCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlInsertTask = new ShowInpTaskCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlDeleteTask = new DeleteTaskCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlProperties = new OpenPropFrmCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlPropAbbr = new PropAbortCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlPropBest = new PropConfirmCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlTable = new TaskEditCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlInpModData = new InpModDataCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlOpenFile     = new OpenFileCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlSaveFile     = new SaveFileCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlSaveAs       = new SaveAsCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlZoomNormal   = new ZoomNormalCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlZoomIn       = new ZoomInCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlZoomOut      = new ZoomOutCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlChart        = new UpdateDataCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlExit         = new ExitAppCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlNewProjekt   = new NewProjCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlInsertTask   = new ShowInpTaskCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlDeleteTask   = new DeleteTaskCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlProperties   = new OpenPropFrmCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlPropAbbr     = new PropAbortCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlPropBest     = new PropConfirmCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlTable        = new TaskEditCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlInpModData   = new InpModDataCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlInpTaskAbort = new TaskInpAbortCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlShowInfoFrm  = new OpenInfoFrmCntrl(frmMainFrame, mdlDataHandle);
 
         cntlOpenFile.registerEvents();
         cntlSaveFile.registerEvents();
@@ -82,6 +84,7 @@ public class GanttChart
         cntlTable.registerEvents();
         cntlInpModData.registerEvents();
         cntlInpTaskAbort.registerEvents();
+        cntlShowInfoFrm.registerEvents();
 
         frmMainFrame.setVisible(true);
         log.info("init components done");

@@ -610,4 +610,6 @@ public abstract class InterfaceView
     }
 
     public abstract void updateChart(IntervalCategoryDataset dataset, String title);
+    
+    public abstract String getVersion();
 }

@@ -32,6 +32,8 @@ import org.xml.sax.SAXException;
 public class DataModel
         extends InterfaceModel
 {
+    private final String version = "1.0.0";
+    
     public DataModel()
     {
         super();
@@ -161,5 +163,10 @@ public class DataModel
         {
             daten.add(new TaskData(values[0], values[1], values[2]));
         }
+    }
+
+    public String getVersion()
+    {
+        return version;
     }
 }

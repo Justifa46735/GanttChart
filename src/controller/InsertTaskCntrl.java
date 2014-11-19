@@ -18,20 +18,17 @@ public class InsertTaskCntrl
         extends InterfaceController
         implements ActionListener
 {
-    private InterfaceView view;
-    private InterfaceModel model;
-    
     public InsertTaskCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }
-    
+
     @Override
     public void registerEvents()
     {
         view.getBtnInsert().addActionListener(this);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e)
     {

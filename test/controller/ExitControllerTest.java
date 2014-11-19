@@ -46,125 +46,125 @@ public class ExitControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class ExitController.
+     * Test of registerEvents method, of class ExitAppCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowOpened method, of class ExitController.
+     * Test of windowOpened method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowOpened()
     {
         System.out.println("windowOpened");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowOpened(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowClosing method, of class ExitController.
+     * Test of windowClosing method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowClosing()
     {
         System.out.println("windowClosing");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowClosing(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowClosed method, of class ExitController.
+     * Test of windowClosed method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowClosed()
     {
         System.out.println("windowClosed");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowClosed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowIconified method, of class ExitController.
+     * Test of windowIconified method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowIconified()
     {
         System.out.println("windowIconified");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowIconified(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowDeiconified method, of class ExitController.
+     * Test of windowDeiconified method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowDeiconified()
     {
         System.out.println("windowDeiconified");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowDeiconified(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowActivated method, of class ExitController.
+     * Test of windowActivated method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowActivated()
     {
         System.out.println("windowActivated");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowActivated(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of windowDeactivated method, of class ExitController.
+     * Test of windowDeactivated method, of class ExitAppCntrl.
      */
     @Test
     public void testWindowDeactivated()
     {
         System.out.println("windowDeactivated");
         WindowEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.windowDeactivated(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class ExitController.
+     * Test of actionPerformed method, of class ExitAppCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        ExitController instance = null;
+        ExitAppCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

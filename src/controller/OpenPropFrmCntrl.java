@@ -1,8 +1,8 @@
 /**
- * @name : PropBestController
+ * @name : PropertiesController
  *
  * @author: lenovo
- * @date : 17.11.2014
+ * @date : 16.11.2014
  *
  * @brief :
  *
@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class PropBestController
+public class OpenPropFrmCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public PropBestController(InterfaceView view, InterfaceModel model)
+    public OpenPropFrmCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }
@@ -26,14 +26,15 @@ public class PropBestController
     @Override
     public void registerEvents()
     {
-        view.getBtnPropBestaetigen().addActionListener(this);
+        view.getMnuProperties().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        String newProjName = view.getTfPropProjektName().getText();
-        model.setProjektName(newProjName);
-        view.getFrmProperties().setVisible(false);
+        view.getTfPropProjektName().setText(model.getProjektName());
+        view.getTfPropProjektName().grabFocus();
+        view.getTfPropProjektName().selectAll();
+        view.getFrmProperties().setVisible(true);
     }
 }

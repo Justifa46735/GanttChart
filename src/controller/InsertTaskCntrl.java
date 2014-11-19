@@ -1,8 +1,8 @@
 /**
- * @name : PropAbbrController
+ * @name : InsertTaskCntrl
  *
  * @author: lenovo
- * @date : 17.11.2014
+ * @date : 19.11.2014
  *
  * @brief :
  *
@@ -14,24 +14,26 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class PropAbbrController
+public class InsertTaskCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public PropAbbrController(InterfaceView view, InterfaceModel model)
+    private InterfaceView view;
+    private InterfaceModel model;
+    
+    public InsertTaskCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }
-
+    
     @Override
     public void registerEvents()
     {
-        view.getBtnPropAbbrechen().addActionListener(this);
+        view.getBtnInsert().addActionListener(this);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        view.getFrmProperties().setVisible(false);
     }
 }

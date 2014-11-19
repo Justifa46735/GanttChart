@@ -45,27 +45,27 @@ public class SaveControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class SaveController.
+     * Test of registerEvents method, of class SaveFileCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        SaveController instance = null;
+        SaveFileCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class SaveController.
+     * Test of actionPerformed method, of class SaveFileCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        SaveController instance = null;
+        SaveFileCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

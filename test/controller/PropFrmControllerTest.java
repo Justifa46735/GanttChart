@@ -45,27 +45,27 @@ public class PropFrmControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class PropFrmController.
+     * Test of registerEvents method, of class OpenPropFrmCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        PropFrmController instance = null;
+        OpenPropFrmCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class PropFrmController.
+     * Test of actionPerformed method, of class OpenPropFrmCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        PropFrmController instance = null;
+        OpenPropFrmCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

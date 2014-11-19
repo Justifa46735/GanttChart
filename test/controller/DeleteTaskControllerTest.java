@@ -45,27 +45,27 @@ public class DeleteTaskControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class DeleteTaskController.
+     * Test of registerEvents method, of class DeleteTaskCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        DeleteTaskController instance = null;
+        DeleteTaskCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class DeleteTaskController.
+     * Test of actionPerformed method, of class DeleteTaskCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        DeleteTaskController instance = null;
+        DeleteTaskCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

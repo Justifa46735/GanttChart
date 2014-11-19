@@ -45,83 +45,83 @@ public class TaskEditControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class TaskEditController.
+     * Test of registerEvents method, of class TaskEditCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        TaskEditController instance = null;
+        TaskEditCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of mouseClicked method, of class TaskEditController.
+     * Test of mouseClicked method, of class TaskEditCntrl.
      */
     @Test
     public void testMouseClicked()
     {
         System.out.println("mouseClicked");
         MouseEvent evt = null;
-        TaskEditController instance = null;
+        TaskEditCntrl instance = null;
         instance.mouseClicked(evt);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of mousePressed method, of class TaskEditController.
+     * Test of mousePressed method, of class TaskEditCntrl.
      */
     @Test
     public void testMousePressed()
     {
         System.out.println("mousePressed");
         MouseEvent e = null;
-        TaskEditController instance = null;
+        TaskEditCntrl instance = null;
         instance.mousePressed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of mouseReleased method, of class TaskEditController.
+     * Test of mouseReleased method, of class TaskEditCntrl.
      */
     @Test
     public void testMouseReleased()
     {
         System.out.println("mouseReleased");
         MouseEvent e = null;
-        TaskEditController instance = null;
+        TaskEditCntrl instance = null;
         instance.mouseReleased(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of mouseEntered method, of class TaskEditController.
+     * Test of mouseEntered method, of class TaskEditCntrl.
      */
     @Test
     public void testMouseEntered()
     {
         System.out.println("mouseEntered");
         MouseEvent e = null;
-        TaskEditController instance = null;
+        TaskEditCntrl instance = null;
         instance.mouseEntered(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of mouseExited method, of class TaskEditController.
+     * Test of mouseExited method, of class TaskEditCntrl.
      */
     @Test
     public void testMouseExited()
     {
         System.out.println("mouseExited");
         MouseEvent e = null;
-        TaskEditController instance = null;
+        TaskEditCntrl instance = null;
         instance.mouseExited(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class ZoomOutController
+public class ZoomOutCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public ZoomOutController(InterfaceView view, InterfaceModel model)
+    public ZoomOutCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

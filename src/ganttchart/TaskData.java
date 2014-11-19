@@ -18,11 +18,10 @@ public class TaskData
     private String bezeichnung;
     private Date startDate;
     private Date endDate;
-    private static SimpleDateFormat dateFormat;
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     public TaskData(String bezeichnung, Date startDate, Date endDate)
     {
-        init();
         this.bezeichnung = bezeichnung;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -30,15 +29,9 @@ public class TaskData
 
     public TaskData(String bezeichnung, String startDate, String endDate) throws ParseException
     {
-        init();
         this.bezeichnung = bezeichnung;
         this.startDate = stringToDate(startDate);
         this.endDate = stringToDate(endDate);
-    }
-
-    private void init()
-    {
-        dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     }
 
     private Date stringToDate(String date) throws ParseException

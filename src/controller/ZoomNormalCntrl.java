@@ -1,8 +1,8 @@
 /**
- * @name : PropertiesController
+ * @name : ZoomNormalController
  *
  * @author: lenovo
- * @date : 16.11.2014
+ * @date : 11.11.2014
  *
  * @brief :
  *
@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class PropFrmController
+public class ZoomNormalCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public PropFrmController(InterfaceView view, InterfaceModel model)
+    public ZoomNormalCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }
@@ -26,15 +26,13 @@ public class PropFrmController
     @Override
     public void registerEvents()
     {
-        view.getMnuProperties().addActionListener(this);
+        view.getBtnZoomNormal().addActionListener(this);
+        view.getMnuZoomNormal().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        view.getTfPropProjektName().setText(model.getProjektName());
-        view.getTfPropProjektName().grabFocus();
-        view.getTfPropProjektName().selectAll();
-        view.getFrmProperties().setVisible(true);
+        view.getChartPanel().restoreAutoBounds();
     }
 }

@@ -21,12 +21,12 @@ import javax.xml.transform.TransformerException;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class ExitController
+public class ExitAppCntrl
         extends InterfaceController
         implements WindowListener, ActionListener
 {
 
-    public ExitController(InterfaceView view, InterfaceModel model)
+    public ExitAppCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

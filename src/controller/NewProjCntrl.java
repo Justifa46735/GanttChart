@@ -19,11 +19,11 @@ import javax.xml.transform.TransformerException;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class NewProjectController
+public class NewProjCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public NewProjectController(InterfaceView view, InterfaceModel model)
+    public NewProjCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

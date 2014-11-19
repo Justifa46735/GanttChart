@@ -45,27 +45,27 @@ public class PropBestControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class PropBestController.
+     * Test of registerEvents method, of class PropConfirmCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        PropBestController instance = null;
+        PropConfirmCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class PropBestController.
+     * Test of actionPerformed method, of class PropConfirmCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        PropBestController instance = null;
+        PropConfirmCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

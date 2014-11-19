@@ -45,27 +45,27 @@ public class OpenFileControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class OpenFileController.
+     * Test of registerEvents method, of class OpenFileCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        OpenFileController instance = null;
+        OpenFileCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class OpenFileController.
+     * Test of actionPerformed method, of class OpenFileCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent evt = null;
-        OpenFileController instance = null;
+        OpenFileCntrl instance = null;
         instance.actionPerformed(evt);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

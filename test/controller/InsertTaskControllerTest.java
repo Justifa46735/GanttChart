@@ -45,27 +45,27 @@ public class InsertTaskControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class InsertTaskController.
+     * Test of registerEvents method, of class ShowInpTaskCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        InsertTaskController instance = null;
+        ShowInpTaskCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class InsertTaskController.
+     * Test of actionPerformed method, of class ShowInpTaskCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent evt = null;
-        InsertTaskController instance = null;
+        ShowInpTaskCntrl instance = null;
         instance.actionPerformed(evt);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

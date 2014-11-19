@@ -45,27 +45,27 @@ public class InpModDataControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class InpModDataController.
+     * Test of registerEvents method, of class InpModDataCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        InpModDataController instance = null;
+        InpModDataCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class InpModDataController.
+     * Test of actionPerformed method, of class InpModDataCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        InpModDataController instance = null;
+        InpModDataCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

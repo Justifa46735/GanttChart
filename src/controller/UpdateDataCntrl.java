@@ -20,13 +20,13 @@ import org.jfree.data.gantt.TaskSeriesCollection;
 import org.jfree.data.time.SimpleTimePeriod;
 import view.InterfaceView;
 
-public class DataUpdateController
+public class UpdateDataCntrl
         extends InterfaceController
         implements Observer
 {
     private final String[] columnNames;
 
-    public DataUpdateController(InterfaceView view, InterfaceModel model)
+    public UpdateDataCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
         //view.getTblData().setModel(new DefaultTableModel(model.getTaskArray().toArray(),4));

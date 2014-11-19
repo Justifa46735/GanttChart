@@ -22,11 +22,11 @@ import model.InterfaceModel;
 import org.xml.sax.SAXException;
 import view.InterfaceView;
 
-public class OpenFileController
+public class OpenFileCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public OpenFileController(InterfaceView view, InterfaceModel model)
+    public OpenFileCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

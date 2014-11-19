@@ -45,27 +45,27 @@ public class ZoomInControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class ZoomInController.
+     * Test of registerEvents method, of class ZoomInCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        ZoomInController instance = null;
+        ZoomInCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of actionPerformed method, of class ZoomInController.
+     * Test of actionPerformed method, of class ZoomInCntrl.
      */
     @Test
     public void testActionPerformed()
     {
         System.out.println("actionPerformed");
         ActionEvent e = null;
-        ZoomInController instance = null;
+        ZoomInCntrl instance = null;
         instance.actionPerformed(e);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

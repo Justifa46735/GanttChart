@@ -1,8 +1,8 @@
 /**
- * @name : ZoomInController
+ * @name : TaskInpAbortCntrl
  *
  * @author: lenovo
- * @date : 11.11.2014
+ * @date : 19.11.2014
  *
  * @brief :
  *
@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class ZoomInController
+public class TaskInpAbortCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public ZoomInController(InterfaceView view, InterfaceModel model)
+    public TaskInpAbortCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }
@@ -26,13 +26,12 @@ public class ZoomInController
     @Override
     public void registerEvents()
     {
-        view.getBtnZoomIn().addActionListener(this);
-        view.getMnuZoomIn().addActionListener(this);
+        view.getBtnAbbrechen().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        view.getChartPanel().zoomInBoth(5, 0);
+        view.getFrmInputData().setVisible(false);
     }
 }

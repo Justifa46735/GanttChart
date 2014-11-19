@@ -9,54 +9,61 @@
  */
 package ganttchart;
 
-import controller.DataUpdateController;
-import controller.DeleteTaskController;
-import controller.ExitController;
-import controller.InpModDataController;
-import controller.InsertTaskController;
+import controller.UpdateDataCntrl;
+import controller.DeleteTaskCntrl;
+import controller.ExitAppCntrl;
+import controller.InpModDataCntrl;
+import controller.ShowInpTaskCntrl;
 import controller.InterfaceController;
-import controller.NewProjectController;
-import controller.OpenFileController;
-import controller.PropAbbrController;
-import controller.PropBestController;
-import controller.PropFrmController;
-import controller.SaveAsController;
-import controller.SaveController;
-import controller.TaskEditController;
-import controller.ZoomInController;
-import controller.ZoomNormalController;
-import controller.ZoomOutController;
+import controller.NewProjCntrl;
+import controller.OpenFileCntrl;
+import controller.PropAbortCntrl;
+import controller.PropConfirmCntrl;
+import controller.OpenPropFrmCntrl;
+import controller.SaveAsCntrl;
+import controller.SaveFileCntrl;
+import controller.TaskEditCntrl;
+import controller.TaskInpAbortCntrl;
+import controller.ZoomInCntrl;
+import controller.ZoomNormalCntrl;
+import controller.ZoomOutCntrl;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import model.DataModel;
 import model.InterfaceModel;
+import util.FileLogger;
 import view.InterfaceView;
 import view.GanttChartFrame;
 
 public class GanttChart
 {
+    private static Logger log = FileLogger.getLogger();
+
     public GanttChart()
     {
+        log.info("init components");
         InterfaceView frmMainFrame = new GanttChartFrame();
         InterfaceModel mdlDataHandle = new DataModel();
 
-        InterfaceController cntlOpenFile   = new OpenFileController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlSaveFile   = new SaveController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlSaveAs     = new SaveAsController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlZoomNormal = new ZoomNormalController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlZoomIn     = new ZoomInController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlZoomOut    = new ZoomOutController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlChart      = new DataUpdateController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlExit       = new ExitController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlNewProjekt = new NewProjectController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlInsertTask = new InsertTaskController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlDeleteTask = new DeleteTaskController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlProperties = new PropFrmController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlPropAbbr   = new PropAbbrController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlPropBest   = new PropBestController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlTable      = new TaskEditController(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlInpModData = new InpModDataController(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlOpenFile = new OpenFileCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlSaveFile = new SaveFileCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlSaveAs = new SaveAsCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlZoomNormal = new ZoomNormalCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlZoomIn = new ZoomInCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlZoomOut = new ZoomOutCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlChart = new UpdateDataCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlExit = new ExitAppCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlNewProjekt = new NewProjCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlInsertTask = new ShowInpTaskCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlDeleteTask = new DeleteTaskCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlProperties = new OpenPropFrmCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlPropAbbr = new PropAbortCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlPropBest = new PropConfirmCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlTable = new TaskEditCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlInpModData = new InpModDataCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlInpTaskAbort = new TaskInpAbortCntrl(frmMainFrame, mdlDataHandle);
 
         cntlOpenFile.registerEvents();
         cntlSaveFile.registerEvents();
@@ -74,14 +81,16 @@ public class GanttChart
         cntlPropBest.registerEvents();
         cntlTable.registerEvents();
         cntlInpModData.registerEvents();
+        cntlInpTaskAbort.registerEvents();
 
         frmMainFrame.setVisible(true);
+        log.info("init components done");
     }
 
     public static void main(String[] args)
     {
         UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
-        
+
         try
         {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())

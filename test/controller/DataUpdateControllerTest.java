@@ -45,20 +45,20 @@ public class DataUpdateControllerTest
     }
 
     /**
-     * Test of registerEvents method, of class DataUpdateController.
+     * Test of registerEvents method, of class UpdateDataCntrl.
      */
     @Test
     public void testRegisterEvents()
     {
         System.out.println("registerEvents");
-        DataUpdateController instance = null;
+        UpdateDataCntrl instance = null;
         instance.registerEvents();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of update method, of class DataUpdateController.
+     * Test of update method, of class UpdateDataCntrl.
      */
     @Test
     public void testUpdate()
@@ -66,7 +66,7 @@ public class DataUpdateControllerTest
         System.out.println("update");
         Observable o = null;
         Object arg = null;
-        DataUpdateController instance = null;
+        UpdateDataCntrl instance = null;
         instance.update(o, arg);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

@@ -19,11 +19,11 @@ import javax.xml.transform.TransformerException;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class SaveController
+public class SaveFileCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public SaveController(InterfaceView view, InterfaceModel model)
+    public SaveFileCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

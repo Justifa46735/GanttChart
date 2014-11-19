@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class DeleteTaskController
+public class DeleteTaskCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public DeleteTaskController(InterfaceView view, InterfaceModel model)
+    public DeleteTaskCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

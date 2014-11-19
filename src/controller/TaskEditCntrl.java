@@ -14,11 +14,11 @@ import java.awt.event.MouseListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class TaskEditController
+public class TaskEditCntrl
         extends InterfaceController
         implements MouseListener
 {
-    public TaskEditController(InterfaceView view, InterfaceModel model)
+    public TaskEditCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

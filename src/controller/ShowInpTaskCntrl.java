@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class InsertTaskController
+public class ShowInpTaskCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public InsertTaskController(InterfaceView view, InterfaceModel model)
+    public ShowInpTaskCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }

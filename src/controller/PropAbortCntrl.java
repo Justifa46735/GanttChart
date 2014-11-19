@@ -1,8 +1,8 @@
 /**
- * @name : ZoomNormalController
+ * @name : PropAbbrController
  *
  * @author: lenovo
- * @date : 11.11.2014
+ * @date : 17.11.2014
  *
  * @brief :
  *
@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
-public class ZoomNormalController
+public class PropAbortCntrl
         extends InterfaceController
         implements ActionListener
 {
-    public ZoomNormalController(InterfaceView view, InterfaceModel model)
+    public PropAbortCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
     }
@@ -26,13 +26,12 @@ public class ZoomNormalController
     @Override
     public void registerEvents()
     {
-        view.getBtnZoomNormal().addActionListener(this);
-        view.getMnuZoomNormal().addActionListener(this);
+        view.getBtnPropAbbrechen().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        view.getChartPanel().restoreAutoBounds();
+        view.getFrmProperties().setVisible(false);
     }
 }

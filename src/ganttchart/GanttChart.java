@@ -28,6 +28,7 @@ import controller.TaskInpAbortCntrl;
 import controller.ZoomInCntrl;
 import controller.ZoomNormalCntrl;
 import controller.ZoomOutCntrl;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -106,6 +107,8 @@ public class GanttChart
         {
             JOptionPane.showConfirmDialog(null, e.toString());
         }
+        
+        System.out.println(new Date().getTime());
 
         new GanttChart();
     }

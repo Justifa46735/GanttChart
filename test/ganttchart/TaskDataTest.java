@@ -5,7 +5,11 @@
  */
 package ganttchart;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,26 +23,27 @@ import static org.junit.Assert.*;
  */
 public class TaskDataTest
 {
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     
     public TaskDataTest()
     {
     }
-    
+
     @BeforeClass
     public static void setUpClass()
     {
     }
-    
+
     @AfterClass
     public static void tearDownClass()
     {
     }
-    
+
     @Before
     public void setUp()
     {
     }
-    
+
     @After
     public void tearDown()
     {
@@ -51,12 +56,10 @@ public class TaskDataTest
     public void testGetName()
     {
         System.out.println("getName");
-        TaskData instance = null;
-        String expResult = "";
+        TaskData instance = new TaskData("project title", new Date(), new Date());
+        String expResult = "project title";
         String result = instance.getName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -65,13 +68,12 @@ public class TaskDataTest
     @Test
     public void testGetStartString()
     {
+        Date d1 = new Date();
         System.out.println("getStartString");
-        TaskData instance = null;
-        String expResult = "";
+        TaskData instance = new TaskData("", d1, new Date());
+        String expResult = dateFormat.format(d1);
         String result = instance.getStartString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -80,28 +82,26 @@ public class TaskDataTest
     @Test
     public void testGetStartDate()
     {
+        Date d1 = new Date();
         System.out.println("getStartDate");
-        TaskData instance = null;
-        Date expResult = null;
+        TaskData instance = new TaskData("", d1, new Date());
+        Date expResult = d1;
         Date result = instance.getStartDate();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getEndString method, of class TaskData.
+     * @throws java.text.ParseException
      */
     @Test
-    public void testGetEndString()
+    public void testGetEndString() throws ParseException
     {
         System.out.println("getEndString");
-        TaskData instance = null;
-        String expResult = "";
+        TaskData instance = new TaskData(null, null, "10.10.2012");
+        String expResult = "10.10.2012";
         String result = instance.getEndString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -110,13 +110,12 @@ public class TaskDataTest
     @Test
     public void testGetEndDate()
     {
+        Date d1 = new Date();
         System.out.println("getEndDate");
-        TaskData instance = null;
-        Date expResult = null;
+        TaskData instance = new TaskData("", new Date(), d1);
+        Date expResult = d1;
         Date result = instance.getEndDate();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -126,12 +125,10 @@ public class TaskDataTest
     public void testGetHoursBetween()
     {
         System.out.println("getHoursBetween");
-        TaskData instance = null;
+        TaskData instance = new TaskData("", new Date(), new Date());
         long expResult = 0L;
         long result = instance.getHoursBetween();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -141,25 +138,30 @@ public class TaskDataTest
     public void testSetName()
     {
         System.out.println("setName");
-        String name = "";
-        TaskData instance = null;
+        String name = "project name";
+        TaskData instance = new TaskData(name, new Date(), null);
         instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(name, instance.getName());
     }
 
     /**
      * Test of setStartDate method, of class TaskData.
      */
     @Test
-    public void testSetStartDate_String() throws Exception
+    public void testSetStartDate_String()
     {
         System.out.println("setStartDate");
-        String startDate = "";
-        TaskData instance = null;
-        instance.setStartDate(startDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String startDate = "10.10.2010";
+        TaskData instance;
+        try
+        {
+            instance = new TaskData("", startDate, null);
+            instance.setStartDate(startDate);
+        }
+        catch (ParseException exp)
+        {
+            fail("unable to set start date as string -> exception: " + exp.toString());
+        }
     }
 
     /**
@@ -169,11 +171,10 @@ public class TaskDataTest
     public void testSetStartDate_Date()
     {
         System.out.println("setStartDate");
-        Date startDate = null;
-        TaskData instance = null;
+        Date startDate = new Date();
+        TaskData instance = new TaskData("", startDate, null);
         instance.setStartDate(startDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(startDate, instance.getStartDate());
     }
 
     /**
@@ -183,11 +184,18 @@ public class TaskDataTest
     public void testSetEndDate_String() throws Exception
     {
         System.out.println("setEndDate");
-        String endDate = "";
-        TaskData instance = null;
+        String endDate = "10.10.2012";
+        TaskData instance = new TaskData("", null, endDate);
         instance.setEndDate(endDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try
+        {
+            instance = new TaskData("", endDate, null);
+            instance.setStartDate(endDate);
+        }
+        catch (ParseException exp)
+        {
+            fail("unable to set start date as string -> exception: " + exp.toString());
+        }
     }
 
     /**
@@ -197,11 +205,10 @@ public class TaskDataTest
     public void testSetEndDate_Date()
     {
         System.out.println("setEndDate");
-        Date endDate = null;
-        TaskData instance = null;
+        Date endDate = new Date();
+        TaskData instance = new TaskData("", null, endDate);
         instance.setEndDate(endDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(endDate, instance.getStartDate());
     }
-    
+
 }

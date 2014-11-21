@@ -12,8 +12,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.junit.After;
@@ -30,26 +28,26 @@ import org.xml.sax.SAXException;
  */
 public class DataModelTest
 {
-    
+
     public DataModelTest()
     {
     }
-    
+
     @BeforeClass
     public static void setUpClass()
     {
     }
-    
+
     @AfterClass
     public static void tearDownClass()
     {
     }
-    
+
     @Before
     public void setUp()
     {
     }
-    
+
     @After
     public void tearDown()
     {
@@ -124,6 +122,40 @@ public class DataModelTest
         assertEquals(instance.getTaskArray().get(index).getStartString(), start);
         assertEquals(instance.getTaskArray().get(index).getEndString(), end);
     }
+    
+    /**
+     * Test of modifyTask method, of class DataModel.
+     */
+    @Test
+    public void testModifyTask_4args_3()
+    {
+        System.out.println("modifyTask");
+        int index = 0;
+        String name = "";
+        Date start = null;
+        int dauer = 0;
+        DataModel instance = new DataModel();
+        instance.modifyTask(index, name, start, dauer);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of modifyTask method, of class DataModel.
+     */
+    @Test
+    public void testModifyTask_4args_4()
+    {
+        System.out.println("modifyTask");
+        int index = 0;
+        String name = "";
+        String start = "";
+        int dauer = 0;
+        DataModel instance = new DataModel();
+        instance.modifyTask(index, name, start, dauer);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 
     /**
      * Test of getTaskArray method, of class DataModel.
@@ -194,5 +226,35 @@ public class DataModelTest
         String result = instance.getVersion();
         assertEquals(expResult, result);
     }
-    
+
+    @Test
+    public void testSetProjectName()
+    {
+        System.out.println("setProjectName");
+        DataModel instance = new DataModel();
+        String expResult = "no project name added";
+
+        instance.setProjektName(null);
+        String result = instance.getProjektName();
+        assertEquals(expResult, result);
+
+        instance.setProjektName("");
+        result = instance.getProjektName();
+        assertEquals(expResult, result);
+
+        expResult = "mein new project";
+        instance.setProjektName(expResult);
+        result = instance.getProjektName();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testGetProjectName()
+    {
+        System.out.println("getProjectName");
+        DataModel instance = new DataModel();
+        String expResult = "no project name added";
+        String result = instance.getProjektName();
+        assertEquals(expResult, result);
+    }
 }

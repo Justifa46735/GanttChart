@@ -28,7 +28,6 @@ import controller.TaskInpAbortCntrl;
 import controller.ZoomInCntrl;
 import controller.ZoomNormalCntrl;
 import controller.ZoomOutCntrl;
-import java.util.Date;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -58,7 +57,7 @@ public class GanttChart
         InterfaceController cntlChart        = new UpdateDataCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlExit         = new ExitAppCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlNewProjekt   = new NewProjCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlInsertTask   = new ShowInpTaskCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlShowInpTask  = new ShowInpTaskCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlDeleteTask   = new DeleteTaskCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlProperties   = new OpenPropFrmCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlPropAbbr     = new PropAbortCntrl(frmMainFrame, mdlDataHandle);
@@ -77,7 +76,7 @@ public class GanttChart
         cntlChart.registerEvents();
         cntlExit.registerEvents();
         cntlNewProjekt.registerEvents();
-        cntlInsertTask.registerEvents();
+        cntlShowInpTask.registerEvents();
         cntlDeleteTask.registerEvents();
         cntlProperties.registerEvents();
         cntlPropAbbr.registerEvents();

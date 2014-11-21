@@ -43,7 +43,14 @@ public abstract class InterfaceModel
 
     public void setProjektName(String projektName)
     {
-        this.projektName = projektName;
+        if(projektName == null || projektName.compareTo("") == 0)
+        {
+            this.projektName = "no project name added";
+        }
+        else
+        {
+            this.projektName = projektName;
+        }
         dataChanged();
     }
 
@@ -77,6 +84,10 @@ public abstract class InterfaceModel
 
     public abstract void modifyTask(int index, String name, String start, String end) throws ParseException;
 
+    public abstract void modifyTask(int index, String name, Date start, int dauer);
+    
+    public abstract void modifyTask(int index, String name, String start, int dauer) throws ParseException;
+    
     public abstract List<TaskData> getTaskArray();
 
     public abstract void saveFile(File xmlFile) throws ParserConfigurationException, TransformerException;

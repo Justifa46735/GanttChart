@@ -83,7 +83,7 @@ public class UpdateDataCntrl
             tmp[i][0] = model.getTaskArray().get(i).getName();
             tmp[i][1] = model.getTaskArray().get(i).getStartString();
             tmp[i][2] = model.getTaskArray().get(i).getEndString();
-            tmp[i][3] = String.valueOf(model.getTaskArray().get(i).getHoursBetween());
+            tmp[i][3] = String.valueOf(model.getTaskArray().get(i).getHoursBetween()) + " h";
         }
 
         DefaultTableModel newTabelModel = new DefaultTableModel(tmp, columnNames)

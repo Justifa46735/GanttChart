@@ -44,7 +44,7 @@ public class OpenFileCntrl
         int retValJOption = JOptionPane.YES_OPTION;
         int retValFileChooser = JFileChooser.APPROVE_OPTION;
 
-        if ((!model.isDataSaved()) && model.getProjektName().compareTo("") != 0)
+        if ((!model.isDataSaved()) && model.getProjektName().compareTo("no project name added") != 0)
         {
             retValJOption = JOptionPane.showConfirmDialog(view,
                                                           "Wollen Sie das Projekt speichern ?",

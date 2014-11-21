@@ -94,6 +94,42 @@ public class DataModel
         }
         super.dataChanged();
     }
+    
+    @Override
+    public void modifyTask(int index, String name, Date start, int dauer)
+    {
+        if (name != null)
+        {
+            daten.get(index).setName(name);
+        }
+        if (start != null)
+        {
+            daten.get(index).setStartDate(start);
+        }
+        if (dauer >= 0)
+        {
+            daten.get(index).setEndDate(new Date(daten.get(index).getStartDate().getTime() + dauer));
+        }
+        super.dataChanged();
+    }
+    
+    @Override
+    public void modifyTask(int index, String name, String start, int dauer) throws ParseException
+    {
+        if (name != null)
+        {
+            daten.get(index).setName(name);
+        }
+        if (start != null)
+        {
+            daten.get(index).setStartDate(start);
+        }
+        if (dauer >= 0)
+        {
+            daten.get(index).setEndDate(new Date(daten.get(index).getStartDate().getTime() + dauer));
+        }
+        super.dataChanged();
+    }
 
     @Override
     public List<TaskData> getTaskArray()

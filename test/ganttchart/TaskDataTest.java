@@ -180,14 +180,14 @@ public class TaskDataTest
      * Test of setEndDate method, of class TaskData.
      */
     @Test
-    public void testSetEndDate_String() throws Exception
+    public void testSetEndDate_String()
     {
-        System.out.println("setEndDate");
-        String endDate = "10.10.2012";
-        TaskData instance = new TaskData("", null, endDate);
-        instance.setEndDate(endDate);
         try
         {
+            System.out.println("setEndDate");
+            String endDate = "10.10.2012";
+            TaskData instance = new TaskData("", null, endDate);
+            instance.setEndDate(endDate);
             instance = new TaskData("", endDate, null);
             instance.setStartDate(endDate);
         }

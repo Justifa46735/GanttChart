@@ -43,7 +43,7 @@ public class TaskEditCntrl
                 view.getTfTaskName().setText(model.getTaskArray().get(row).getName());
                 view.getFtfTaskStart().setText(model.getTaskArray().get(row).getStartString());
                 view.getFtfTaskEnde().setText(model.getTaskArray().get(row).getEndString());
-                view.getFtfTaskDauer().setText(String.valueOf(model.getTaskArray().get(row).getHoursBetween()));
+                view.getFtfTaskDauer().setText(String.valueOf(model.getTaskArray().get(row).getHoursBetween()) + " h");
                 view.getFrmInputData().setVisible(true);
             }
         }

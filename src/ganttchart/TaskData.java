@@ -33,6 +33,20 @@ public class TaskData
         this.startDate = stringToDate(startDate);
         this.endDate = stringToDate(endDate);
     }
+    
+    public TaskData(String bezeichnung, Date startDate, int dauer)
+    {
+        this.bezeichnung = bezeichnung;
+        this.startDate = startDate;
+        this.endDate = new Date(this.startDate.getTime() + dauer);
+    }
+    
+    public TaskData(String bezeichnung, String startDate, int dauer) throws ParseException
+    {
+        this.bezeichnung = bezeichnung;
+        this.startDate = stringToDate(startDate);
+        this.endDate = new Date(this.startDate.getTime() + dauer);
+    }
 
     private Date stringToDate(String date) throws ParseException
     {

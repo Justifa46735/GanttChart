@@ -108,8 +108,6 @@ public class GanttChart
             JOptionPane.showConfirmDialog(null, e.toString());
         }
         
-        System.out.println(new Date().getTime());
-
         new GanttChart();
     }
 }

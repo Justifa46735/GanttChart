@@ -8,8 +8,6 @@ package ganttchart;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,7 +22,7 @@ import static org.junit.Assert.*;
 public class TaskDataTest
 {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    
+
     public TaskDataTest()
     {
     }
@@ -92,6 +90,7 @@ public class TaskDataTest
 
     /**
      * Test of getEndString method, of class TaskData.
+     *
      * @throws java.text.ParseException
      */
     @Test

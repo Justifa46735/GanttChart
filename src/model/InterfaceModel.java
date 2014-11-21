@@ -28,7 +28,6 @@ public abstract class InterfaceModel
     protected final List<String> elementName;
     private String projektName;
     private boolean dataSaved;
-    protected String version;
 
     public InterfaceModel()
     {
@@ -39,7 +38,7 @@ public abstract class InterfaceModel
         elementName.add("End_Date");
         elementName.add("Hours_Between");
 
-        projektName = "";
+        projektName = "no project name added";
     }
 
     public void setProjektName(String projektName)

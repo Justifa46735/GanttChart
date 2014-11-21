@@ -33,7 +33,7 @@ public class DataModel
         extends InterfaceModel
 {
     private final String version = "1.0.0";
-    
+
     public DataModel()
     {
         super();
@@ -42,32 +42,56 @@ public class DataModel
     @Override
     public void addTask(TaskData new_task)
     {
-        daten.add(new_task);
-        super.dataChanged();
+        if (new_task != null)
+        {
+            daten.add(new_task);
+            super.dataChanged();
+        }
     }
 
     @Override
     public void removeTask(TaskData old_task)
     {
-        daten.remove(old_task);
-        super.dataChanged();
+        if (old_task != null)
+        {
+            daten.remove(old_task);
+            super.dataChanged();
+        }
     }
 
     @Override
     public void modifyTask(int index, String name, Date start, Date end)
     {
-        daten.get(index).setName(name);
-        daten.get(index).setStartDate(start);
-        daten.get(index).setEndDate(end);
+        if (name != null)
+        {
+            daten.get(index).setName(name);
+        }
+        if (start != null)
+        {
+            daten.get(index).setStartDate(start);
+        }
+        if (end != null)
+        {
+            daten.get(index).setEndDate(end);
+        }
         super.dataChanged();
     }
 
     @Override
     public void modifyTask(int index, String name, String start, String end) throws ParseException
     {
-        daten.get(index).setName(name);
-        daten.get(index).setStartDate(start);
-        daten.get(index).setEndDate(end);
+        if (name != null)
+        {
+            daten.get(index).setName(name);
+        }
+        if (start != null)
+        {
+            daten.get(index).setStartDate(start);
+        }
+        if (end != null)
+        {
+            daten.get(index).setEndDate(end);
+        }
         super.dataChanged();
     }
 
@@ -165,6 +189,7 @@ public class DataModel
         }
     }
 
+    @Override
     public String getVersion()
     {
         return version;

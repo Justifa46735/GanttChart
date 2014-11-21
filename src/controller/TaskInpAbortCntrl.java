@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class TaskInpAbortCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
     public TaskInpAbortCntrl(InterfaceView view, InterfaceModel model)

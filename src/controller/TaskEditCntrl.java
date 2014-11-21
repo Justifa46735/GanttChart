@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class TaskEditCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements MouseListener
 {
     public TaskEditCntrl(InterfaceView view, InterfaceModel model)

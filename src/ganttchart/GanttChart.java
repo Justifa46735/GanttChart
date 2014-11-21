@@ -86,7 +86,7 @@ public class GanttChart
         cntlInpTaskAbort.registerEvents();
         cntlShowInfoFrm.registerEvents();
 
-        frmMainFrame.setVisible(true);
+        frmMainFrame.visible(true);
         log.info("init components done");
     }
 

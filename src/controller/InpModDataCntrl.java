@@ -9,17 +9,22 @@
  */
 package controller;
 
+import ganttchart.TaskData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.InterfaceModel;
+import util.FileLogger;
 import view.InterfaceView;
 
 public class InpModDataCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
+    private static Logger log = FileLogger.getLogger();
+
     public InpModDataCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
@@ -79,10 +84,8 @@ public class InpModDataCntrl
             }
             catch (ParseException exp)
             {
-                JOptionPane.showMessageDialog(view,
-                                              "Task konnte nicht bearbeitet werden !\n" + exp.getLocalizedMessage(),
-                                              "Fehler !",
-                                              JOptionPane.ERROR_MESSAGE);
+                view.showErrorMsg("Task konnte nicht bearbeitet werden !");
+                log.severe("task could not be modified ! " + exp.toString());
             }
         }
     }
@@ -91,6 +94,27 @@ public class InpModDataCntrl
     {
         if (checkInpData() != -1)
         {
+            if (view.getFtfTaskDauer().getText().compareTo("0 h") == 0
+                    || view.getFtfTaskDauer().getText().compareTo("") == 0)
+            {
+                try
+                {
+                    model.addTask(new TaskData(view.getTfTaskName().getText(),
+                                               view.getFtfTaskStart().getText(),
+                                               view.getFtfTaskEnde().getText()));
+                }
+                catch (ParseException exp)
+                {
+                    JOptionPane.showMessageDialog(view.getFrmInputData(),
+                                                  "Task konnte nicht hinzugefügt werden !\n" + exp.getLocalizedMessage(),
+                                                  "Fehler !",
+                                                  JOptionPane.ERROR_MESSAGE);
+                    log.severe("task could not be added ! " + exp.toString());
+                }
+            }
+            else
+            {
+            }
         }
     }
 

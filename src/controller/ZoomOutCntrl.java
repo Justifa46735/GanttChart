@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class ZoomOutCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
     public ZoomOutCntrl(InterfaceView view, InterfaceModel model)

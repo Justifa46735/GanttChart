@@ -13,86 +13,42 @@ import ganttchart.TaskData;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Observable;
+import java.util.Observer;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
 
-public abstract class InterfaceModel
-        extends Observable
+public interface InterfaceModel
 {
-    protected List<TaskData> daten;
-    protected final List<String> elementName;
-    private String projektName;
-    private boolean dataSaved;
+    public abstract void addBeobachter(Observer obj);
 
-    public InterfaceModel()
-    {
-        daten = new ArrayList<>();
-        elementName = new ArrayList<>();
-        elementName.add("Bezeichnung");
-        elementName.add("Start_Date");
-        elementName.add("End_Date");
-        elementName.add("Hours_Between");
+    public abstract void setProjektName(String projektName);
 
-        projektName = "no project name added";
-    }
+    public abstract String getProjektName();
 
-    public void setProjektName(String projektName)
-    {
-        if(projektName == null || projektName.compareTo("") == 0)
-        {
-            this.projektName = "no project name added";
-        }
-        else
-        {
-            this.projektName = projektName;
-        }
-        dataChanged();
-    }
-
-    public String getProjektName()
-    {
-        return projektName;
-    }
-
-    public boolean isDataSaved()
-    {
-        return dataSaved;
-    }
-
-    protected void setDataSaved()
-    {
-        this.dataSaved = true;
-    }
-
-    protected void dataChanged()
-    {
-        this.dataSaved = false;
-        this.setChanged();
-        this.notifyObservers();
-    }
+    public abstract boolean isDataSaved();
 
     public abstract void addTask(TaskData new_task);
 
     public abstract void removeTask(TaskData old_task);
+    
+    public abstract void clearData();
 
     public abstract void modifyTask(int index, String name, Date start, Date end);
 
     public abstract void modifyTask(int index, String name, String start, String end) throws ParseException;
 
     public abstract void modifyTask(int index, String name, Date start, int dauer);
-    
+
     public abstract void modifyTask(int index, String name, String start, int dauer) throws ParseException;
-    
+
     public abstract List<TaskData> getTaskArray();
 
     public abstract void saveFile(File xmlFile) throws ParserConfigurationException, TransformerException;
 
     public abstract void openFile(File xmlFile) throws SAXException, IOException, ParserConfigurationException, ParseException;
-    
+
     public abstract String getVersion();
 }

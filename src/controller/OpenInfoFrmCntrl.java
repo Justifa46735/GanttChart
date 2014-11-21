@@ -11,12 +11,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import model.InterfaceModel;
 import view.InterfaceView;
 
 public class OpenInfoFrmCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
     public OpenInfoFrmCntrl(InterfaceView view, InterfaceModel model)
@@ -41,6 +40,6 @@ public class OpenInfoFrmCntrl
         msg.append(model.getVersion());
         msg.append("\n");
 
-        JOptionPane.showMessageDialog(view, msg.toString(), "Info", JOptionPane.INFORMATION_MESSAGE);
+        view.showInfoMsg(msg.toString());
     }
 }

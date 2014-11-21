@@ -9,20 +9,25 @@
  */
 package controller;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import model.InterfaceModel;
+import util.FileLogger;
 import view.InterfaceView;
 
 public class NewProjCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
+    private static Logger log = FileLogger.getLogger();
+
     public NewProjCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
@@ -43,14 +48,11 @@ public class NewProjCntrl
 
         if ((!model.isDataSaved()) && model.getProjektName().compareTo("no project name added") != 0)
         {
-            retValJOption = JOptionPane.showConfirmDialog(view,
-                                                          "Wollen Sie das Projekt speichern ?",
-                                                          "Speichern ?",
-                                                          JOptionPane.YES_NO_CANCEL_OPTION);
+            retValJOption = view.showOptionDialog("Speichern ?", "Wollen Sie das Projekt speichern ?");
 
             if (retValJOption == JOptionPane.YES_OPTION)
             {
-                retValFileChooser = view.getFileChooser().showSaveDialog(view);
+                retValFileChooser = view.getFileChooser().showSaveDialog((Component) view);
 
                 if (retValFileChooser == JFileChooser.APPROVE_OPTION)
                 {
@@ -63,10 +65,8 @@ public class NewProjCntrl
                     }
                     catch (ParserConfigurationException | TransformerException exp)
                     {
-                        JOptionPane.showMessageDialog(view,
-                                                      "Beim Speichern der Datei ist ein Fehler aufgetretten:\n" + exp.getLocalizedMessage(),
-                                                      "Fehler !",
-                                                      JOptionPane.ERROR_MESSAGE);
+                        view.showErrorMsg("Beim Speichern der Datei ist ein Fehler aufgetretten!");
+                        log.severe("could not save file ! " + exp.getLocalizedMessage());
 
                     }
                 }
@@ -91,6 +91,7 @@ public class NewProjCntrl
                 view.getMnuInsertTask().setEnabled(true);
                 view.getMnuDeleteTask().setEnabled(true);
                 view.getMnuProperties().setEnabled(true);
+                model.clearData();
                 view.getTblData().setFillsViewportHeight(true);
             }
         }

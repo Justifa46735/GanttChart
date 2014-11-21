@@ -21,7 +21,7 @@ import org.jfree.data.time.SimpleTimePeriod;
 import view.InterfaceView;
 
 public class UpdateDataCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements Observer
 {
     private final String[] columnNames;
@@ -41,7 +41,7 @@ public class UpdateDataCntrl
     @Override
     public void registerEvents()
     {
-        model.addObserver(this);
+        model.addBeobachter(this);
     }
 
     @Override
@@ -55,17 +55,20 @@ public class UpdateDataCntrl
     {
         if (!model.getTaskArray().isEmpty())
         {
-            TaskSeries s1 = new TaskSeries("Scheduled");
+            //TaskSeries s1 = new TaskSeries("Scheduled");
+            TaskSeries s1 = null;
+            TaskSeriesCollection collection = new TaskSeriesCollection();
 
             for (TaskData tsk : model.getTaskArray())
             {
+                s1 = new TaskSeries("");
                 s1.add(new Task(tsk.getName(), new SimpleTimePeriod(tsk.getStartDate(), tsk.getEndDate())));
+                collection.add(s1);
+                //s1.add(new Task(tsk.getName(), new SimpleTimePeriod(tsk.getStartDate(), tsk.getEndDate())));
             }
 
-            TaskSeriesCollection collection = new TaskSeriesCollection();
-            collection.add(s1);
-            collection.add(s1);
-
+            //collection.add(s1);
+            //collection.add(s1);
             view.updateChart(collection, model.getProjektName());
         }
         else
@@ -94,7 +97,7 @@ public class UpdateDataCntrl
                 return false;
             }
         };
-        
+
         view.getTblData().setModel(newTabelModel);
     }
 }

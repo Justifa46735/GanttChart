@@ -17,11 +17,11 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class ShowInpTaskCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    
+
     public ShowInpTaskCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);

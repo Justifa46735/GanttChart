@@ -9,20 +9,24 @@
  */
 package controller;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import model.InterfaceModel;
+import util.FileLogger;
 import view.InterfaceView;
 
 public class SaveFileCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
+    private static Logger log = FileLogger.getLogger();
+
     public SaveFileCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
@@ -42,7 +46,7 @@ public class SaveFileCntrl
 
         if (view.getLblFile().getText().compareTo("File") == 0)
         {
-            int retVal = view.getFileChooser().showSaveDialog(view);
+            int retVal = view.getFileChooser().showSaveDialog((Component) view);
 
             if (retVal == JFileChooser.APPROVE_OPTION)
             {
@@ -66,10 +70,8 @@ public class SaveFileCntrl
             }
             catch (ParserConfigurationException | TransformerException exp)
             {
-                JOptionPane.showMessageDialog(view,
-                                              "Beim Speichern der Datei ist ein Fehler aufgetretten:\n" + exp.getLocalizedMessage(),
-                                              "Fehler !",
-                                              JOptionPane.ERROR_MESSAGE);
+                view.showErrorMsg("Beim Speichern der Datei ist ein Fehler aufgetretten !");
+                log.severe("could not save file ! " + exp.getLocalizedMessage());
 
             }
         }

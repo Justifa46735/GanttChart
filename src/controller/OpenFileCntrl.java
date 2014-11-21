@@ -9,23 +9,28 @@
  */
 package controller;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import model.InterfaceModel;
 import org.xml.sax.SAXException;
+import util.FileLogger;
 import view.InterfaceView;
 
 public class OpenFileCntrl
-        extends InterfaceController
+        extends InterfaceClassCntrl
         implements ActionListener
 {
+    private static Logger log = FileLogger.getLogger();
+
     public OpenFileCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
@@ -46,14 +51,11 @@ public class OpenFileCntrl
 
         if ((!model.isDataSaved()) && model.getProjektName().compareTo("no project name added") != 0)
         {
-            retValJOption = JOptionPane.showConfirmDialog(view,
-                                                          "Wollen Sie das Projekt speichern ?",
-                                                          "Speichern ?",
-                                                          JOptionPane.YES_NO_CANCEL_OPTION);
+            retValJOption = view.showOptionDialog("Speichern ?", "Wollen Sie das Projekt speichern ?");
 
             if (retValJOption == JOptionPane.YES_OPTION)
             {
-                retValFileChooser = view.getFileChooser().showSaveDialog(view);
+                retValFileChooser = view.getFileChooser().showSaveDialog((Component) view);
 
                 if (retValFileChooser == JFileChooser.APPROVE_OPTION)
                 {
@@ -66,48 +68,46 @@ public class OpenFileCntrl
                     }
                     catch (ParserConfigurationException | TransformerException exp)
                     {
-                        JOptionPane.showMessageDialog(view,
-                                                      "Beim Speichern der Datei ist ein Fehler aufgetretten:\n" + exp.getLocalizedMessage(),
-                                                      "Fehler !",
-                                                      JOptionPane.ERROR_MESSAGE);
+                        view.showErrorMsg("Beim Speichern der Datei ist ein Fehler aufgetretten !");
+                        log.severe("could not save file ! " + exp.getLocalizedMessage());
 
                     }
                 }
             }
         }
 
-        if (retValJOption != JOptionPane.CANCEL_OPTION && retValJOption != JOptionPane.CLOSED_OPTION
+        if (retValJOption != JOptionPane.CANCEL_OPTION
+                && retValJOption != JOptionPane.CLOSED_OPTION
                 && retValFileChooser != JFileChooser.CANCEL_OPTION)
         {
 
-            int retVal = view.getFileChooser().showOpenDialog(view);
+            int retVal = view.getFileChooser().showOpenDialog((Component) view);
 
             if (retVal == JFileChooser.APPROVE_OPTION)
             {
                 File f = view.getFileChooser().getSelectedFile();
                 view.setLastDirectory(f.getAbsolutePath());
-                view.getLblFile().setText(f.getAbsolutePath());
-                view.getBtnSave().setEnabled(true);
-                view.getMnuSave().setEnabled(true);
-                view.getBtnSaveAs().setEnabled(true);
-                view.getMnuSaveAs().setEnabled(true);
-                view.getMnuProperties().setEnabled(true);
-                view.getMnuInsertTask().setEnabled(true);
-                view.getMnuDeleteTask().setEnabled(true);
-                view.getBtnInsertTask().setEnabled(true);
-                view.getBtnDeleteTask().setEnabled(true);
-                view.getTblData().setFillsViewportHeight(true);
 
                 try
                 {
                     model.openFile(f);
+
+                    view.getLblFile().setText(f.getAbsolutePath());
+                    view.getBtnSave().setEnabled(true);
+                    view.getMnuSave().setEnabled(true);
+                    view.getBtnSaveAs().setEnabled(true);
+                    view.getMnuSaveAs().setEnabled(true);
+                    view.getMnuProperties().setEnabled(true);
+                    view.getMnuInsertTask().setEnabled(true);
+                    view.getMnuDeleteTask().setEnabled(true);
+                    view.getBtnInsertTask().setEnabled(true);
+                    view.getBtnDeleteTask().setEnabled(true);
+                    view.getTblData().setFillsViewportHeight(true);
                 }
                 catch (SAXException | IOException | ParserConfigurationException | ParseException exp)
                 {
-                    JOptionPane.showMessageDialog(view,
-                                                  "Beim öffnen der Datei ist ein Fehler aufgetretten:\n" + exp.getLocalizedMessage(),
-                                                  "Fehler !",
-                                                  JOptionPane.ERROR_MESSAGE);
+                    view.showErrorMsg("Beim öffnen der Datei ist ein Fehler aufgetretten !");
+                    log.severe("could not open file ! " + exp.toString());
                 }
             }
         }

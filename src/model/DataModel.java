@@ -13,9 +13,12 @@ import ganttchart.TaskData;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,13 +33,64 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class DataModel
-        extends InterfaceModel
+        extends Observable
+        implements InterfaceModel
 {
+    protected List<TaskData> daten;
+    protected final List<String> elementName;
+    private String projektName;
+    private boolean dataSaved;
+
     private final String version = "1.0.0";
 
     public DataModel()
     {
-        super();
+        daten = new ArrayList<>();
+        elementName = new ArrayList<>();
+        elementName.add("Bezeichnung");
+        elementName.add("Start_Date");
+        elementName.add("End_Date");
+        elementName.add("Hours_Between");
+
+        projektName = "no project name added";
+    }
+
+    private void setDataSaved()
+    {
+        this.dataSaved = true;
+    }
+
+    private void dataChanged()
+    {
+        this.dataSaved = false;
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    @Override
+    public void setProjektName(String projektName)
+    {
+        if (projektName == null || projektName.compareTo("") == 0)
+        {
+            this.projektName = "no project name added";
+        }
+        else
+        {
+            this.projektName = projektName;
+        }
+        dataChanged();
+    }
+
+    @Override
+    public String getProjektName()
+    {
+        return projektName;
+    }
+
+    @Override
+    public boolean isDataSaved()
+    {
+        return dataSaved;
     }
 
     @Override
@@ -45,7 +99,7 @@ public class DataModel
         if (new_task != null)
         {
             daten.add(new_task);
-            super.dataChanged();
+            dataChanged();
         }
     }
 
@@ -55,8 +109,15 @@ public class DataModel
         if (old_task != null)
         {
             daten.remove(old_task);
-            super.dataChanged();
+            dataChanged();
         }
+    }
+    
+    @Override
+    public void clearData()
+    {
+        daten.clear();
+        dataChanged();
     }
 
     @Override
@@ -74,7 +135,7 @@ public class DataModel
         {
             daten.get(index).setEndDate(end);
         }
-        super.dataChanged();
+        dataChanged();
     }
 
     @Override
@@ -92,9 +153,9 @@ public class DataModel
         {
             daten.get(index).setEndDate(end);
         }
-        super.dataChanged();
+        dataChanged();
     }
-    
+
     @Override
     public void modifyTask(int index, String name, Date start, int dauer)
     {
@@ -110,9 +171,9 @@ public class DataModel
         {
             daten.get(index).setEndDate(new Date(daten.get(index).getStartDate().getTime() + dauer));
         }
-        super.dataChanged();
+        dataChanged();
     }
-    
+
     @Override
     public void modifyTask(int index, String name, String start, int dauer) throws ParseException
     {
@@ -128,7 +189,7 @@ public class DataModel
         {
             daten.get(index).setEndDate(new Date(daten.get(index).getStartDate().getTime() + dauer));
         }
-        super.dataChanged();
+        dataChanged();
     }
 
     @Override
@@ -144,7 +205,7 @@ public class DataModel
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.newDocument();
 
-        Element rootElement = doc.createElement(super.getProjektName().replace(" ", "_"));
+        Element rootElement = doc.createElement(getProjektName().replace(" ", "_"));
         doc.appendChild(rootElement);
 
         for (int i = 0; i < daten.size(); i++)
@@ -176,7 +237,7 @@ public class DataModel
         StreamResult result = new StreamResult(xmlFile);
 
         transformer.transform(source, result);
-        super.setDataSaved();
+        setDataSaved();
     }
 
     @Override
@@ -190,7 +251,7 @@ public class DataModel
 
         Element docElement = document.getDocumentElement();
         NodeList nodeList = docElement.getElementsByTagName("Task");
-        super.setProjektName(docElement.getNodeName().replace("_", " "));
+        setProjektName(docElement.getNodeName().replace("_", " "));
 
         if (nodeList != null && nodeList.getLength() > 0)
         {
@@ -201,7 +262,7 @@ public class DataModel
             }
         }
 
-        super.dataChanged();
+        dataChanged();
     }
 
     private void saveElements(Element element) throws ParseException
@@ -229,5 +290,11 @@ public class DataModel
     public String getVersion()
     {
         return version;
+    }
+
+    @Override
+    public void addBeobachter(Observer obj)
+    {
+        this.addObserver(obj);
     }
 }

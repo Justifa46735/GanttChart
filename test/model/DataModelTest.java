@@ -9,6 +9,7 @@ import ganttchart.TaskData;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,7 @@ import org.xml.sax.SAXException;
  */
 public class DataModelTest
 {
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     public DataModelTest()
     {
@@ -113,16 +115,16 @@ public class DataModelTest
         try
         {
             instance.modifyTask(index, name, start, end);
+            assertEquals(instance.getTaskArray().get(index).getName(), name);
+            assertEquals(instance.getTaskArray().get(index).getStartString(), start);
+            assertEquals(instance.getTaskArray().get(index).getEndString(), end);
         }
         catch (ParseException exp)
         {
             fail("could not modify task: " + exp.toString());
         }
-        assertEquals(instance.getTaskArray().get(index).getName(), name);
-        assertEquals(instance.getTaskArray().get(index).getStartString(), start);
-        assertEquals(instance.getTaskArray().get(index).getEndString(), end);
     }
-    
+
     /**
      * Test of modifyTask method, of class DataModel.
      */
@@ -131,13 +133,15 @@ public class DataModelTest
     {
         System.out.println("modifyTask");
         int index = 0;
-        String name = "";
-        Date start = null;
-        int dauer = 0;
+        String name = "new project";
+        Date start = new Date();
+        int dauer = 1000;
         DataModel instance = new DataModel();
+        instance.addTask(new TaskData(null, new Date(), null));
         instance.modifyTask(index, name, start, dauer);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getTaskArray().get(index).getName(), name);
+        assertEquals(instance.getTaskArray().get(index).getStartDate(), start);
+        assertEquals(instance.getTaskArray().get(index).getEndDate().getTime(), start.getTime() + dauer);
     }
 
     /**
@@ -148,13 +152,23 @@ public class DataModelTest
     {
         System.out.println("modifyTask");
         int index = 0;
-        String name = "";
-        String start = "";
-        int dauer = 0;
+        String name = "new project";
+        String start = "10.10.2012";
+        int dauer = 1000;
         DataModel instance = new DataModel();
-        instance.modifyTask(index, name, start, dauer);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.addTask(new TaskData(null, new Date(), null));
+        try
+        {
+            instance.modifyTask(index, name, start, dauer);
+            assertEquals(instance.getTaskArray().get(index).getName(), name);
+            assertEquals(instance.getTaskArray().get(index).getStartString(), start);
+            String end = dateFormat.format(new Date(instance.getTaskArray().get(index).getStartDate().getTime() + dauer));
+            assertEquals(instance.getTaskArray().get(index).getEndString(), end);
+        }
+        catch (ParseException exp)
+        {
+            fail("coul not modify task " + exp.toString());
+        }
     }
 
     /**

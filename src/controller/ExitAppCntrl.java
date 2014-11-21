@@ -25,7 +25,7 @@ import util.FileLogger;
 import view.InterfaceView;
 
 public class ExitAppCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements WindowListener, ActionListener
 {
     private static Logger log = FileLogger.getLogger();

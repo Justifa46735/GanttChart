@@ -21,7 +21,7 @@ import org.jfree.data.time.SimpleTimePeriod;
 import view.InterfaceView;
 
 public class UpdateDataCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements Observer
 {
     private final String[] columnNames;
@@ -58,10 +58,11 @@ public class UpdateDataCntrl
             //TaskSeries s1 = new TaskSeries("Scheduled");
             TaskSeries s1 = null;
             TaskSeriesCollection collection = new TaskSeriesCollection();
+            int i = 1;
 
             for (TaskData tsk : model.getTaskArray())
             {
-                s1 = new TaskSeries("");
+                s1 = new TaskSeries("Task" + i++);
                 s1.add(new Task(tsk.getName(), new SimpleTimePeriod(tsk.getStartDate(), tsk.getEndDate())));
                 collection.add(s1);
                 //s1.add(new Task(tsk.getName(), new SimpleTimePeriod(tsk.getStartDate(), tsk.getEndDate())));

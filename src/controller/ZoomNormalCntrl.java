@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class ZoomNormalCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     public ZoomNormalCntrl(InterfaceView view, InterfaceModel model)

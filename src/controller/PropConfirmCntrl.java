@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class PropConfirmCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     public PropConfirmCntrl(InterfaceView view, InterfaceModel model)

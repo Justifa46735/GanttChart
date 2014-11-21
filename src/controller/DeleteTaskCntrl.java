@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class DeleteTaskCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     public DeleteTaskCntrl(InterfaceView view, InterfaceModel model)

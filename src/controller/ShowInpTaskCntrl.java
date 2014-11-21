@@ -17,7 +17,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class ShowInpTaskCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");

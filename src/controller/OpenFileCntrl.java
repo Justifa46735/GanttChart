@@ -26,7 +26,7 @@ import util.FileLogger;
 import view.InterfaceView;
 
 public class OpenFileCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     private static Logger log = FileLogger.getLogger();

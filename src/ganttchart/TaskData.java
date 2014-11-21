@@ -38,14 +38,14 @@ public class TaskData
     {
         this.bezeichnung = bezeichnung;
         this.startDate = (startDate == null) ? (new Date()) : startDate;
-        this.endDate = new Date(this.startDate.getTime() + dauer);
+        this.endDate = new Date(this.startDate.getTime() + (long) (60.0 * 60.0 * 1000.0 * dauer));
     }
 
     public TaskData(String bezeichnung, String startDate, int dauer) throws ParseException
     {
         this.bezeichnung = bezeichnung;
         this.startDate = (startDate == null) ? (new Date()) : stringToDate(startDate);
-        this.endDate = new Date(this.startDate.getTime() + dauer);
+        this.endDate = new Date(this.startDate.getTime() + (long) (60.0 * 60.0 * 1000.0 * dauer));
     }
 
     private Date stringToDate(String date) throws ParseException

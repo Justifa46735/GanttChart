@@ -15,7 +15,7 @@ import model.InterfaceModel;
 import view.InterfaceView;
 
 public class OpenInfoFrmCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     public OpenInfoFrmCntrl(InterfaceView view, InterfaceModel model)

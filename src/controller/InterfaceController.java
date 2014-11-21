@@ -9,7 +9,19 @@
  */
 package controller;
 
-public interface InterfaceController
+import model.InterfaceModel;
+import view.InterfaceView;
+
+public abstract class InterfaceController
 {
+    protected final InterfaceView view;
+    protected final InterfaceModel model;
+
+    public InterfaceController(InterfaceView view, InterfaceModel model)
+    {
+        this.view = view;
+        this.model = model;
+    }
+
     public abstract void registerEvents();
 }

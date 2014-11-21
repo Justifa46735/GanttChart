@@ -23,7 +23,7 @@ import util.FileLogger;
 import view.InterfaceView;
 
 public class NewProjCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     private static Logger log = FileLogger.getLogger();

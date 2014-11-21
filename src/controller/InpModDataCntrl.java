@@ -20,7 +20,7 @@ import util.FileLogger;
 import view.InterfaceView;
 
 public class InpModDataCntrl
-        extends InterfaceClassCntrl
+        extends InterfaceController
         implements ActionListener
 {
     private static Logger log = FileLogger.getLogger();
@@ -102,6 +102,7 @@ public class InpModDataCntrl
                     model.addTask(new TaskData(view.getTfTaskName().getText(),
                                                view.getFtfTaskStart().getText(),
                                                view.getFtfTaskEnde().getText()));
+                    view.getFrmInputData().setVisible(false);
                 }
                 catch (ParseException exp)
                 {
@@ -141,10 +142,11 @@ public class InpModDataCntrl
         }
 
         if (view.getFtfTaskEnde().getText().compareTo("") == 0
-                && view.getFtfTaskDauer().getText().compareTo("") == 0)
+                && (view.getFtfTaskDauer().getText().compareTo("") == 0
+                    || view.getFtfTaskDauer().getText().compareTo("0 h") == 0))
         {
             JOptionPane.showMessageDialog(view.getFrmInputData(),
-                                          "Bitte geben Sie entweder ein End Datum oder ein Zeitddauer ein !",
+                                          "Bitte geben Sie entweder ein End-Datum oder eine Zeitdauer ein !",
                                           "Fehler !",
                                           JOptionPane.ERROR_MESSAGE);
             view.getFtfTaskEnde().grabFocus();

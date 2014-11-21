@@ -112,7 +112,7 @@ public class DataModel
             dataChanged();
         }
     }
-    
+
     @Override
     public void clearData()
     {
@@ -169,7 +169,7 @@ public class DataModel
         }
         if (dauer >= 0)
         {
-            daten.get(index).setEndDate(new Date(daten.get(index).getStartDate().getTime() + dauer));
+            daten.get(index).getEndDate().setTime(daten.get(index).getStartDate().getTime() + (long)(60.0 * 60.0 * 1000.0 * dauer));
         }
         dataChanged();
     }
@@ -187,7 +187,7 @@ public class DataModel
         }
         if (dauer >= 0)
         {
-            daten.get(index).setEndDate(new Date(daten.get(index).getStartDate().getTime() + dauer));
+            daten.get(index).getEndDate().setTime(daten.get(index).getStartDate().getTime() + (long)(60.0 * 60.0 * 1000.0 * dauer));
         }
         dataChanged();
     }

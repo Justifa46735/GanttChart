@@ -80,6 +80,7 @@ public class NewProjCntrl
 
             if (retVal != null)
             {
+                model.clearData();
                 model.setProjektName(retVal);
                 view.getLblFile().setText("File");
                 view.getBtnSave().setEnabled(true);
@@ -91,7 +92,6 @@ public class NewProjCntrl
                 view.getMnuInsertTask().setEnabled(true);
                 view.getMnuDeleteTask().setEnabled(true);
                 view.getMnuProperties().setEnabled(true);
-                model.clearData();
                 view.getTblData().setFillsViewportHeight(true);
             }
         }

@@ -31,15 +31,11 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.IntervalCategoryDataset;
 
 public class GanttChartFrame
         extends JFrame
@@ -51,7 +47,6 @@ public class GanttChartFrame
     private final String version = "1.0.0";
     private final String[] columnNames;
 
-    private JFreeChart chart;
     private JFrame frmInputData;
     private JFrame frmProperties;
     private JMenuBar mbMainMenuBar;
@@ -111,7 +106,10 @@ public class GanttChartFrame
 
     public GanttChartFrame()
     {
+        int h = this.getToolkit().getScreenSize().height;
+        int w = this.getToolkit().getScreenSize().width;
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.setSize(new Dimension(w - 100, h - 100));
 
         columnNames = new String[4];
         columnNames[0] = "Task Bezeichnung";
@@ -183,20 +181,14 @@ public class GanttChartFrame
         flTextFieldProjName = new Box.Filler(new Dimension(0, 10), new Dimension(0, 10), new Dimension(32767, 10));
         flLblProjName = new Box.Filler(new Dimension(0, 10), new Dimension(0, 10), new Dimension(32767, 10));
         tblData = new JTable();
-        chart = ChartFactory.createGanttChart("Gantt Chart", "Tasks", "Datum", null, true, false, false);
-        pnlChartPanel = new ChartPanel(chart);
+        pnlChartPanel = new ChartPanel(null);
 
-        // ***** main window
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(new Dimension(950, 600));
-        setLocationRelativeTo(null);
-
-        getContentPane().add(tbMainToolBar, BorderLayout.PAGE_START);
-        getContentPane().add(splPnlMainFrmCenter, BorderLayout.CENTER);
-        getContentPane().add(lblFile, BorderLayout.SOUTH);
+        this.getContentPane().add(tbMainToolBar, BorderLayout.PAGE_START);
+        this.getContentPane().add(splPnlMainFrmCenter, BorderLayout.CENTER);
+        this.getContentPane().add(lblFile, BorderLayout.SOUTH);
 
         // menu bar
-        setJMenuBar(mbMainMenuBar);
+        this.setJMenuBar(mbMainMenuBar);
         mbMainMenuBar.add(mnuDatei);
         mbMainMenuBar.add(mnuBearbeiten);
         mbMainMenuBar.add(mnuAnsicht);
@@ -434,19 +426,6 @@ public class GanttChartFrame
     public void visible(boolean state)
     {
         setVisible(state);
-    }
-
-    @Override
-    public void updateChart(IntervalCategoryDataset dataset, String title)
-    {
-        getChartPanel().removeAll();
-        getChartPanel().revalidate();
-        chart = ChartFactory.createGanttChart(title, "Tasks", "Date", dataset, true, true, false);
-        pnlChartPanel = new ChartPanel(chart);
-        chart.setAntiAlias(true);
-        chart.setTextAntiAlias(true);
-        getScrPnlMainFrmRight().setViewportView(pnlChartPanel);
-        getScrPnlMainFrmRight().repaint();
     }
 
     @Override

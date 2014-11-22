@@ -14,6 +14,11 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.DefaultTableModel;
 import model.InterfaceModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.event.ChartChangeEvent;
+import org.jfree.chart.event.ChartChangeListener;
+import org.jfree.data.category.IntervalCategoryDataset;
 import org.jfree.data.gantt.Task;
 import org.jfree.data.gantt.TaskSeries;
 import org.jfree.data.gantt.TaskSeriesCollection;
@@ -22,14 +27,14 @@ import view.InterfaceView;
 
 public class UpdateDataCntrl
         extends InterfaceController
-        implements Observer
+        implements Observer, ChartChangeListener
 {
     private final String[] columnNames;
+    private JFreeChart chart;
 
     public UpdateDataCntrl(InterfaceView view, InterfaceModel model)
     {
         super(view, model);
-        //view.getTblData().setModel(new DefaultTableModel(model.getTaskArray().toArray(),4));
 
         columnNames = new String[4];
         columnNames[0] = "Task Bezeichnung";
@@ -70,11 +75,11 @@ public class UpdateDataCntrl
 
             //collection.add(s1);
             //collection.add(s1);
-            view.updateChart(collection, model.getProjektName());
+            updateChart(collection, model.getProjektName());
         }
         else
         {
-            view.updateChart(null, model.getProjektName());
+            updateChart(null, model.getProjektName());
         }
     }
 
@@ -100,5 +105,41 @@ public class UpdateDataCntrl
         };
 
         view.getTblData().setModel(newTabelModel);
+    }
+
+    @Override
+    public void chartChanged(ChartChangeEvent cce)
+    {
+        String projektName = chart.getTitle().getText();
+
+        if (projektName.compareTo(model.getProjektName()) != 0)
+        {
+            model.setProjektName(projektName);
+            System.out.println(model.getProjektName());
+
+            if (!view.getBtnInsertTask().isEnabled())
+            {
+                view.getLblFile().setText("File");
+                view.getBtnSave().setEnabled(true);
+                view.getMnuSave().setEnabled(true);
+                view.getBtnSaveAs().setEnabled(false);
+                view.getMnuSaveAs().setEnabled(false);
+                view.getBtnInsertTask().setEnabled(true);
+                view.getBtnDeleteTask().setEnabled(true);
+                view.getMnuInsertTask().setEnabled(true);
+                view.getMnuDeleteTask().setEnabled(true);
+                view.getMnuProperties().setEnabled(true);
+                view.getTblData().setFillsViewportHeight(true);
+            }
+        }
+    }
+
+    private void updateChart(IntervalCategoryDataset dataset, String title)
+    {
+        chart = ChartFactory.createGanttChart(title, "Tasks", "Date", dataset, true, true, false);
+        view.getChartPanel().setChart(chart);
+        chart.addChangeListener(this);
+        chart.setAntiAlias(true);
+        chart.setTextAntiAlias(true);
     }
 }

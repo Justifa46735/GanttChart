@@ -54,7 +54,7 @@ public class GanttChart
         InterfaceController cntlZoomNormal   = new ZoomNormalCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlZoomIn       = new ZoomInCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlZoomOut      = new ZoomOutCntrl(frmMainFrame, mdlDataHandle);
-        InterfaceController cntlChart        = new UpdateDataCntrl(frmMainFrame, mdlDataHandle);
+        InterfaceController cntlUpdateData   = new UpdateDataCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlExit         = new ExitAppCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlNewProjekt   = new NewProjCntrl(frmMainFrame, mdlDataHandle);
         InterfaceController cntlShowInpTask  = new ShowInpTaskCntrl(frmMainFrame, mdlDataHandle);
@@ -73,7 +73,7 @@ public class GanttChart
         cntlZoomNormal.registerEvents();
         cntlZoomIn.registerEvents();
         cntlZoomOut.registerEvents();
-        cntlChart.registerEvents();
+        cntlUpdateData.registerEvents();
         cntlExit.registerEvents();
         cntlNewProjekt.registerEvents();
         cntlShowInpTask.registerEvents();
@@ -106,7 +106,7 @@ public class GanttChart
         {
             JOptionPane.showConfirmDialog(null, e.toString());
         }
-        
+
         new GanttChart();
     }
 }

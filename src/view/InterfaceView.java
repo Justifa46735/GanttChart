@@ -20,7 +20,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import org.jfree.chart.ChartPanel;
-import org.jfree.data.category.IntervalCategoryDataset;
 
 public interface InterfaceView
 {
@@ -109,8 +108,6 @@ public interface InterfaceView
     public JTextField getTfPropProjektName();
 
     public JScrollPane getScrPnlMainFrmRight();
-
-    public abstract void updateChart(IntervalCategoryDataset dataset, String title);
 
     public abstract String getVersion();
 }

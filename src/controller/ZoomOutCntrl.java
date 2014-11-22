@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import model.InterfaceModel;
 import view.InterfaceView;
 
+/*
+* Controlls the actions for hitting the buttons BtnZoomOut or MnuZoomOut from the view
+*/
 public class ZoomOutCntrl
         extends InterfaceController
         implements ActionListener

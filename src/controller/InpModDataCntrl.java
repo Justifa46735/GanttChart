@@ -9,7 +9,7 @@
  */
 package controller;
 
-import ganttchart.TaskData;
+import model.TaskData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -115,6 +115,21 @@ public class InpModDataCntrl
             }
             else
             {
+                try
+                {
+                    model.addTask(new TaskData(view.getTfTaskName().getText(),
+                                               view.getFtfTaskStart().getText(),
+                                               Integer.valueOf(view.getFtfTaskDauer().getText().replace("h", "").replace(" ", ""))));
+                    view.getFrmInputData().setVisible(false);
+                }
+                catch (ParseException exp)
+                {
+                    JOptionPane.showMessageDialog(view.getFrmInputData(),
+                                                  "Task konnte nicht hinzugefügt werden !\n" + exp.getLocalizedMessage(),
+                                                  "Fehler !",
+                                                  JOptionPane.ERROR_MESSAGE);
+                    log.severe("task could not be added ! " + exp.toString());
+                }
             }
         }
     }

@@ -9,7 +9,6 @@
  */
 package model;
 
-import ganttchart.TaskData;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -169,7 +168,7 @@ public class DataModel
         }
         if (dauer >= 0)
         {
-            daten.get(index).getEndDate().setTime(daten.get(index).getStartDate().getTime() + (long)(60.0 * 60.0 * 1000.0 * dauer));
+            daten.get(index).getEndDate().setTime(daten.get(index).getStartDate().getTime() + (long) (60.0 * 60.0 * 1000.0 * dauer));
         }
         dataChanged();
     }
@@ -187,7 +186,7 @@ public class DataModel
         }
         if (dauer >= 0)
         {
-            daten.get(index).getEndDate().setTime(daten.get(index).getStartDate().getTime() + (long)(60.0 * 60.0 * 1000.0 * dauer));
+            daten.get(index).getEndDate().setTime(daten.get(index).getStartDate().getTime() + (long) (60.0 * 60.0 * 1000.0 * dauer));
         }
         dataChanged();
     }
@@ -295,6 +294,9 @@ public class DataModel
     @Override
     public void addBeobachter(Observer obj)
     {
-        this.addObserver(obj);
+        if (obj != null)
+        {
+            this.addObserver(obj);
+        }
     }
 }

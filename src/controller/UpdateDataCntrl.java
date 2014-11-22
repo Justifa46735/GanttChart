@@ -9,7 +9,7 @@
  */
 package controller;
 
-import ganttchart.TaskData;
+import model.TaskData;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.DefaultTableModel;

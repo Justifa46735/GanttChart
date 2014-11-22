@@ -5,7 +5,7 @@
  */
 package model;
 
-import ganttchart.TaskData;
+import controller.UpdateDataCntrl;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Observer;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.junit.After;
@@ -141,7 +142,7 @@ public class DataModelTest
         instance.modifyTask(index, name, start, dauer);
         assertEquals(instance.getTaskArray().get(index).getName(), name);
         assertEquals(instance.getTaskArray().get(index).getStartDate(), start);
-        assertEquals(instance.getTaskArray().get(index).getEndDate().getTime(), start.getTime() + dauer);
+        assertEquals(instance.getTaskArray().get(index).getEndDate().getTime(), start.getTime() + (long) (60.0 * 60.0 * 1000.0 * dauer));
     }
 
     /**
@@ -162,7 +163,7 @@ public class DataModelTest
             instance.modifyTask(index, name, start, dauer);
             assertEquals(instance.getTaskArray().get(index).getName(), name);
             assertEquals(instance.getTaskArray().get(index).getStartString(), start);
-            String end = dateFormat.format(new Date(instance.getTaskArray().get(index).getStartDate().getTime() + dauer));
+            String end = dateFormat.format(new Date(instance.getTaskArray().get(index).getStartDate().getTime() + (long) (60.0 * 60.0 * 1000.0 * dauer)));
             assertEquals(instance.getTaskArray().get(index).getEndString(), end);
         }
         catch (ParseException exp)
@@ -241,8 +242,11 @@ public class DataModelTest
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of setProjektName method, of class DataModel.
+     */
     @Test
-    public void testSetProjectName()
+    public void testSetProjektName()
     {
         System.out.println("setProjectName");
         DataModel instance = new DataModel();
@@ -262,13 +266,60 @@ public class DataModelTest
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of getProjektName method, of class DataModel.
+     */
     @Test
-    public void testGetProjectName()
+    public void testGetProjektName()
     {
         System.out.println("getProjectName");
         DataModel instance = new DataModel();
         String expResult = "no project name added";
         String result = instance.getProjektName();
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isDataSaved method, of class DataModel.
+     */
+    @Test
+    public void testIsDataSaved()
+    {
+        System.out.println("isDataSaved");
+        DataModel instance = new DataModel();
+        boolean expResult = false;
+        boolean result = instance.isDataSaved();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of clearData method, of class DataModel.
+     */
+    @Test
+    public void testClearData()
+    {
+        System.out.println("clearData");
+        DataModel instance = new DataModel();
+        instance.addTask(new TaskData(null, new Date(), null));
+        instance.addTask(new TaskData(null, new Date(), null));
+        instance.addTask(new TaskData(null, null, new Date()));
+        instance.addTask(new TaskData(null, null, new Date()));
+
+        instance.clearData();
+    }
+
+    /**
+     * Test of addBeobachter method, of class DataModel.
+     */
+    @Test
+    public void testAddBeobachter()
+    {
+        System.out.println("addBeobachter");
+        Observer obj = null;
+        DataModel instance = new DataModel();
+        instance.addBeobachter(obj);
+
+        obj = new UpdateDataCntrl(null, instance);
+        instance.addBeobachter(obj);
     }
 }

@@ -377,12 +377,12 @@ public class GanttChartFrame
         tfTaskName.setFont(new Font("Ubuntu", 0, 18));
 
         ftfTaskStart.setFormatterFactory(new DefaultFormatterFactory(new DateFormatter()));
-        ftfTaskStart.setText("01.01.2014");
+        ftfTaskStart.setText("");
         ftfTaskStart.setToolTipText("Startdatum eingeben");
         ftfTaskStart.setSelectionStart(0);
 
         ftfTaskEnde.setFormatterFactory(new DefaultFormatterFactory(new DateFormatter()));
-        ftfTaskEnde.setText("31.12.2014");
+        ftfTaskEnde.setText("");
         ftfTaskEnde.setSelectionStart(0);
 
         ftfTaskDauer.setFormatterFactory(new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("#0 h"))));

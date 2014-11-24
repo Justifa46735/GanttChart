@@ -40,8 +40,8 @@ public class ShowInpTaskCntrl
         view.getFrmInputData().setTitle("neue Aufgabe hinzufügen");
         view.getFrmInputData().getTfTaskName().setText("Task Bezeichnung");
         view.getFrmInputData().getBtnInsert().setText("Einfügen");
-        view.getFrmInputData().getFtfTaskStart().setText(dateFormat.format(new Date()));
-        view.getFrmInputData().getFtfTaskEnde().setText(dateFormat.format(new Date()));
+        view.getFrmInputData().getFtfStartDate().setText(dateFormat.format(new Date()));
+        view.getFrmInputData().getFtfEndDate().setText(dateFormat.format(new Date()));
         view.getFrmInputData().getTfTaskName().grabFocus();
         view.getFrmInputData().getTfTaskName().selectAll();
         view.getFrmInputData().setVisible(true);

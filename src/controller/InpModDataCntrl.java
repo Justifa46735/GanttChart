@@ -68,14 +68,14 @@ public class InpModDataCntrl
 
                         model.modifyTask(row,
                                          view.getFrmInputData().getTfTaskName().getText(),
-                                         view.getFrmInputData().getFtfTaskStart().getText(),
-                                         view.getFrmInputData().getFtfTaskEnde().getText());
+                                         view.getFrmInputData().getFtfStartDate().getText(),
+                                         view.getFrmInputData().getFtfEndDate().getText());
                     }
                     else
                     {
                         model.modifyTask(row,
                                          view.getFrmInputData().getTfTaskName().getText(),
-                                         view.getFrmInputData().getFtfTaskStart().getText(),
+                                         view.getFrmInputData().getFtfStartDate().getText(),
                                          Integer.valueOf(view.getFrmInputData().getFtfTaskDauer().getText().replace("h", "").replace(" ", "")));
                     }
 
@@ -100,8 +100,8 @@ public class InpModDataCntrl
                 try
                 {
                     model.addTask(new TaskData(view.getFrmInputData().getTfTaskName().getText(),
-                                               view.getFrmInputData().getFtfTaskStart().getText(),
-                                               view.getFrmInputData().getFtfTaskEnde().getText()));
+                                               view.getFrmInputData().getFtfStartDate().getText(),
+                                               view.getFrmInputData().getFtfEndDate().getText()));
                     view.getFrmInputData().setVisible(false);
                 }
                 catch (ParseException exp)
@@ -118,7 +118,7 @@ public class InpModDataCntrl
                 try
                 {
                     model.addTask(new TaskData(view.getFrmInputData().getTfTaskName().getText(),
-                                               view.getFrmInputData().getFtfTaskStart().getText(),
+                                               view.getFrmInputData().getFtfStartDate().getText(),
                                                Integer.valueOf(view.getFrmInputData().getFtfTaskDauer().getText().replace("h", "").replace(" ", ""))));
                     view.getFrmInputData().setVisible(false);
                 }
@@ -146,17 +146,17 @@ public class InpModDataCntrl
             return -1;
         }
 
-        if (view.getFrmInputData().getFtfTaskStart().getText().compareTo("") == 0)
+        if (view.getFrmInputData().getFtfStartDate().getText().compareTo("") == 0)
         {
             JOptionPane.showMessageDialog(view.getFrmInputData(),
                                           "Bitte geben Sie ein Start Datum ein !",
                                           "Fehler !",
                                           JOptionPane.ERROR_MESSAGE);
-            view.getFrmInputData().getFtfTaskStart().grabFocus();
+            view.getFrmInputData().getFtfStartDate().grabFocus();
             return -1;
         }
 
-        if (view.getFrmInputData().getFtfTaskEnde().getText().compareTo("") == 0
+        if (view.getFrmInputData().getFtfEndDate().getText().compareTo("") == 0
                 && (view.getFrmInputData().getFtfTaskDauer().getText().compareTo("") == 0
                     || view.getFrmInputData().getFtfTaskDauer().getText().compareTo("0 h") == 0))
         {
@@ -164,7 +164,7 @@ public class InpModDataCntrl
                                           "Bitte geben Sie entweder ein End-Datum oder eine Zeitdauer ein !",
                                           "Fehler !",
                                           JOptionPane.ERROR_MESSAGE);
-            view.getFrmInputData().getFtfTaskEnde().grabFocus();
+            view.getFrmInputData().getFtfEndDate().grabFocus();
             return -1;
         }
 

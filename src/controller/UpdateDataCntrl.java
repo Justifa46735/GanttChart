@@ -9,7 +9,6 @@
  */
 package controller;
 
-import java.util.List;
 import model.TaskData;
 import java.util.Observable;
 import java.util.Observer;

@@ -33,19 +33,19 @@ public class InpModDataCntrl
     @Override
     public void registerEvents()
     {
-        view.getBtnInsert().addActionListener(this);
+        view.getFrmInputData().getBtnInsert().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (view.getBtnInsert().getText().compareTo("Bearbeiten") == 0)
+        if (view.getFrmInputData().getBtnInsert().getText().compareTo("Bearbeiten") == 0)
         {
             modifyTask();
         }
         else
         {
-            if (view.getBtnInsert().getText().compareTo("Einfügen") == 0)
+            if (view.getFrmInputData().getBtnInsert().getText().compareTo("Einfügen") == 0)
             {
                 insertNewTask();
             }
@@ -62,21 +62,21 @@ public class InpModDataCntrl
             {
                 if (checkInpData() != -1)
                 {
-                    if (view.getFtfTaskDauer().getText().compareTo("0 h") == 0
-                            || view.getFtfTaskDauer().getText().compareTo("") == 0)
+                    if (view.getFrmInputData().getFtfTaskDauer().getText().compareTo("0 h") == 0
+                            || view.getFrmInputData().getFtfTaskDauer().getText().compareTo("") == 0)
                     {
 
                         model.modifyTask(row,
-                                         view.getTfTaskName().getText(),
-                                         view.getFtfTaskStart().getText(),
-                                         view.getFtfTaskEnde().getText());
+                                         view.getFrmInputData().getTfTaskName().getText(),
+                                         view.getFrmInputData().getFtfTaskStart().getText(),
+                                         view.getFrmInputData().getFtfTaskEnde().getText());
                     }
                     else
                     {
                         model.modifyTask(row,
-                                         view.getTfTaskName().getText(),
-                                         view.getFtfTaskStart().getText(),
-                                         Integer.valueOf(view.getFtfTaskDauer().getText().replace("h", "").replace(" ", "")));
+                                         view.getFrmInputData().getTfTaskName().getText(),
+                                         view.getFrmInputData().getFtfTaskStart().getText(),
+                                         Integer.valueOf(view.getFrmInputData().getFtfTaskDauer().getText().replace("h", "").replace(" ", "")));
                     }
 
                     view.getFrmInputData().setVisible(false);
@@ -94,14 +94,14 @@ public class InpModDataCntrl
     {
         if (checkInpData() != -1)
         {
-            if (view.getFtfTaskDauer().getText().compareTo("0 h") == 0
-                    || view.getFtfTaskDauer().getText().compareTo("") == 0)
+            if (view.getFrmInputData().getFtfTaskDauer().getText().compareTo("0 h") == 0
+                    || view.getFrmInputData().getFtfTaskDauer().getText().compareTo("") == 0)
             {
                 try
                 {
-                    model.addTask(new TaskData(view.getTfTaskName().getText(),
-                                               view.getFtfTaskStart().getText(),
-                                               view.getFtfTaskEnde().getText()));
+                    model.addTask(new TaskData(view.getFrmInputData().getTfTaskName().getText(),
+                                               view.getFrmInputData().getFtfTaskStart().getText(),
+                                               view.getFrmInputData().getFtfTaskEnde().getText()));
                     view.getFrmInputData().setVisible(false);
                 }
                 catch (ParseException exp)
@@ -117,9 +117,9 @@ public class InpModDataCntrl
             {
                 try
                 {
-                    model.addTask(new TaskData(view.getTfTaskName().getText(),
-                                               view.getFtfTaskStart().getText(),
-                                               Integer.valueOf(view.getFtfTaskDauer().getText().replace("h", "").replace(" ", ""))));
+                    model.addTask(new TaskData(view.getFrmInputData().getTfTaskName().getText(),
+                                               view.getFrmInputData().getFtfTaskStart().getText(),
+                                               Integer.valueOf(view.getFrmInputData().getFtfTaskDauer().getText().replace("h", "").replace(" ", ""))));
                     view.getFrmInputData().setVisible(false);
                 }
                 catch (ParseException exp)
@@ -136,35 +136,35 @@ public class InpModDataCntrl
 
     private int checkInpData()
     {
-        if (view.getTfTaskName().getText().compareTo("") == 0)
+        if (view.getFrmInputData().getTfTaskName().getText().compareTo("") == 0)
         {
             JOptionPane.showMessageDialog(view.getFrmInputData(),
                                           "Bitte geben Sie eine Bezeichnung ein !",
                                           "Fehler !",
                                           JOptionPane.ERROR_MESSAGE);
-            view.getTfTaskName().grabFocus();
+            view.getFrmInputData().getTfTaskName().grabFocus();
             return -1;
         }
 
-        if (view.getFtfTaskStart().getText().compareTo("") == 0)
+        if (view.getFrmInputData().getFtfTaskStart().getText().compareTo("") == 0)
         {
             JOptionPane.showMessageDialog(view.getFrmInputData(),
                                           "Bitte geben Sie ein Start Datum ein !",
                                           "Fehler !",
                                           JOptionPane.ERROR_MESSAGE);
-            view.getFtfTaskStart().grabFocus();
+            view.getFrmInputData().getFtfTaskStart().grabFocus();
             return -1;
         }
 
-        if (view.getFtfTaskEnde().getText().compareTo("") == 0
-                && (view.getFtfTaskDauer().getText().compareTo("") == 0
-                    || view.getFtfTaskDauer().getText().compareTo("0 h") == 0))
+        if (view.getFrmInputData().getFtfTaskEnde().getText().compareTo("") == 0
+                && (view.getFrmInputData().getFtfTaskDauer().getText().compareTo("") == 0
+                    || view.getFrmInputData().getFtfTaskDauer().getText().compareTo("0 h") == 0))
         {
             JOptionPane.showMessageDialog(view.getFrmInputData(),
                                           "Bitte geben Sie entweder ein End-Datum oder eine Zeitdauer ein !",
                                           "Fehler !",
                                           JOptionPane.ERROR_MESSAGE);
-            view.getFtfTaskEnde().grabFocus();
+            view.getFrmInputData().getFtfTaskEnde().grabFocus();
             return -1;
         }
 

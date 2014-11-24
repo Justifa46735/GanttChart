@@ -26,7 +26,7 @@ public class TaskInpAbortCntrl
     @Override
     public void registerEvents()
     {
-        view.getBtnAbbrechen().addActionListener(this);
+        view.getFrmInputData().getBtnAbbrechen().addActionListener(this);
     }
 
     @Override

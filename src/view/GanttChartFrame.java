@@ -4,19 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.text.DecimalFormat;
 import java.util.prefs.Preferences;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -32,9 +29,6 @@ import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
-import javax.swing.text.DateFormatter;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.NumberFormatter;
 import org.jfree.chart.ChartPanel;
 
 public class GanttChartFrame
@@ -47,23 +41,19 @@ public class GanttChartFrame
     private final String version = "1.0.0";
     private final String[] columnNames;
 
-    private JFrame frmInputData;
+    private InputDataframe frmInputData;
     private JFrame frmProperties;
     private JMenuBar mbMainMenuBar;
     private JToolBar tbMainToolBar;
     private JFileChooser fileChooser;
-    private JPanel pnlInpFrmUpper;
-    private JPanel pnlInpFrmDown;
     private JPanel pnlPropertiesSouth;
     private JPanel pnlPropertiesWest;
     private JPanel pnlPropertiesCenter;
     private JSplitPane splPnlMainFrmCenter;
     private JScrollPane scrPnlMainFrmLeft;
     private JScrollPane scrPnlMainFrmRight;
-    private JButton btnAbbrechen;
     private JButton btnSave;
     private JButton btnSaveAs;
-    private JButton btnInsert;
     private JButton btnNew;
     private JButton btnOpen;
     private JButton btnZoomNormal;
@@ -73,16 +63,8 @@ public class GanttChartFrame
     private JButton btnDeleteTask;
     private JButton btnPropAbbrechen;
     private JButton btnPropBestaetigen;
-    private JTextField tfTaskName;
     private JTextField tfPropProjektName;
-    private JFormattedTextField ftfTaskDauer;
-    private JFormattedTextField ftfTaskEnde;
-    private JFormattedTextField ftfTaskStart;
     private JLabel lblFile;
-    private JLabel lblBezeichnung;
-    private JLabel lblStartZeit;
-    private JLabel lblEndeZeit;
-    private JLabel lblDauer;
     private JLabel lblProjektName;
     private JMenu mnuAnsicht;
     private JMenu mnuBearbeiten;
@@ -125,29 +107,17 @@ public class GanttChartFrame
 
     private void initComponents()
     {
-        frmInputData = new JFrame();
+        frmInputData = new InputDataframe();
         frmProperties = new JFrame();
         mbMainMenuBar = new JMenuBar();
         tbMainToolBar = new JToolBar();
         fileChooser = new JFileChooser();
-        pnlInpFrmUpper = new JPanel();
-        pnlInpFrmDown = new JPanel();
         pnlPropertiesSouth = new JPanel();
         pnlPropertiesWest = new JPanel();
         pnlPropertiesCenter = new JPanel();
-        tfTaskName = new JTextField();
         tfPropProjektName = new JTextField();
-        ftfTaskStart = new JFormattedTextField();
-        ftfTaskEnde = new JFormattedTextField();
-        ftfTaskDauer = new JFormattedTextField();
-        lblBezeichnung = new JLabel();
-        lblStartZeit = new JLabel();
-        lblEndeZeit = new JLabel();
-        lblDauer = new JLabel();
         lblFile = new JLabel();
         lblProjektName = new JLabel();
-        btnAbbrechen = new JButton();
-        btnInsert = new JButton();
         btnNew = new JButton();
         btnSave = new JButton();
         btnSaveAs = new JButton();
@@ -334,58 +304,7 @@ public class GanttChartFrame
         scrPnlMainFrmRight.setViewportView(pnlChartPanel);
 
         // ***** input data window
-        frmInputData.setTitle(" ");
-        frmInputData.getContentPane().setLayout(new BoxLayout(frmInputData.getContentPane(), BoxLayout.Y_AXIS));
-        frmInputData.setSize(400, 180);
-        frmInputData.setDefaultCloseOperation(HIDE_ON_CLOSE);
         frmInputData.setLocationRelativeTo(this);
-
-        frmInputData.getContentPane().add(pnlInpFrmUpper);
-        frmInputData.getContentPane().add(pnlInpFrmDown);
-
-        pnlInpFrmUpper.setLayout(new GridLayout(0, 2));
-        pnlInpFrmUpper.add(lblBezeichnung);
-        pnlInpFrmUpper.add(tfTaskName);
-        pnlInpFrmUpper.add(lblStartZeit);
-        pnlInpFrmUpper.add(ftfTaskStart);
-        pnlInpFrmUpper.add(lblEndeZeit);
-        pnlInpFrmUpper.add(ftfTaskEnde);
-        pnlInpFrmUpper.add(lblDauer);
-        pnlInpFrmUpper.add(ftfTaskDauer);
-
-        pnlInpFrmDown.setLayout(new FlowLayout());
-        pnlInpFrmDown.add(btnAbbrechen);
-        pnlInpFrmDown.add(btnInsert);
-
-        lblBezeichnung.setFont(new Font("Ubuntu", 0, 18));
-        lblBezeichnung.setText(" Bezeichnung");
-        lblStartZeit.setFont(new Font("Ubuntu", 0, 18));
-        lblStartZeit.setText(" Start");
-        lblEndeZeit.setFont(new Font("Ubuntu", 0, 18));
-        lblEndeZeit.setText(" Ende");
-        lblDauer.setFont(new Font("Ubuntu", 0, 18));
-        lblDauer.setText(" Dauer");
-
-        tfTaskName.setFont(new Font("Ubuntu", 0, 18));
-
-        ftfTaskStart.setFormatterFactory(new DefaultFormatterFactory(new DateFormatter()));
-        ftfTaskStart.setText("");
-        ftfTaskStart.setToolTipText("Startdatum eingeben");
-        ftfTaskStart.setSelectionStart(0);
-
-        ftfTaskEnde.setFormatterFactory(new DefaultFormatterFactory(new DateFormatter()));
-        ftfTaskEnde.setText("");
-        ftfTaskEnde.setSelectionStart(0);
-
-        ftfTaskDauer.setFormatterFactory(new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("#0 h"))));
-        ftfTaskDauer.setText("0 h");
-        ftfTaskDauer.setSelectionStart(0);
-
-        btnAbbrechen.setFont(new Font("Ubuntu", 0, 18));
-        btnAbbrechen.setText("Abbrechen");
-
-        btnInsert.setFont(new Font("Ubuntu", 0, 18));
-        btnInsert.setText("Einfügen");
 
         // ***** properties window
         frmProperties.setTitle("Eigenschaften");
@@ -459,36 +378,6 @@ public class GanttChartFrame
     }
 
     @Override
-    public JMenuItem getMnuZoomNormal()
-    {
-        return mnuZoomNormal;
-    }
-
-    @Override
-    public JMenuItem getMnuZoomOut()
-    {
-        return mnuZoomOut;
-    }
-
-    @Override
-    public JMenuItem getMnuZoomIn()
-    {
-        return mnuZoomIn;
-    }
-
-    @Override
-    public JFileChooser getFileChooser()
-    {
-        return fileChooser;
-    }
-
-    @Override
-    public JButton getBtnAbbrechen()
-    {
-        return btnAbbrechen;
-    }
-
-    @Override
     public JButton getBtnSave()
     {
         return btnSave;
@@ -498,12 +387,6 @@ public class GanttChartFrame
     public JButton getBtnSaveAs()
     {
         return btnSaveAs;
-    }
-
-    @Override
-    public JButton getBtnInsert()
-    {
-        return btnInsert;
     }
 
     @Override
@@ -519,33 +402,39 @@ public class GanttChartFrame
     }
 
     @Override
-    public JFormattedTextField getFtfTaskDauer()
+    public JButton getBtnInsertTask()
     {
-        return ftfTaskDauer;
+        return btnInsertTask;
     }
 
     @Override
-    public JFormattedTextField getFtfTaskEnde()
+    public JButton getBtnDeleteTask()
     {
-        return ftfTaskEnde;
+        return btnDeleteTask;
     }
 
     @Override
-    public JFormattedTextField getFtfTaskStart()
+    public JMenuItem getMnuProperties()
     {
-        return ftfTaskStart;
+        return mnuProperties;
     }
 
     @Override
-    public JTextField getTfTaskName()
+    public JMenuItem getMnuZoomNormal()
     {
-        return tfTaskName;
+        return mnuZoomNormal;
     }
 
     @Override
-    public JLabel getLblFile()
+    public JMenuItem getMnuZoomOut()
     {
-        return lblFile;
+        return mnuZoomOut;
+    }
+
+    @Override
+    public JMenuItem getMnuZoomIn()
+    {
+        return mnuZoomIn;
     }
 
     @Override
@@ -585,30 +474,6 @@ public class GanttChartFrame
     }
 
     @Override
-    public JTable getTblData()
-    {
-        return tblData;
-    }
-
-    @Override
-    public JButton getBtnInsertTask()
-    {
-        return btnInsertTask;
-    }
-
-    @Override
-    public JButton getBtnDeleteTask()
-    {
-        return btnDeleteTask;
-    }
-
-    @Override
-    public void setLastDirectory(String path)
-    {
-        pref.put("LAST_DIRECTORY", path);
-    }
-
-    @Override
     public JMenuItem getMnuInsertTask()
     {
         return mnuInsertTask;
@@ -621,15 +486,33 @@ public class GanttChartFrame
     }
 
     @Override
-    public JFrame getFrmInputData()
+    public JFileChooser getFileChooser()
     {
-        return frmInputData;
+        return fileChooser;
     }
 
     @Override
-    public JMenuItem getMnuProperties()
+    public JLabel getLblFile()
     {
-        return mnuProperties;
+        return lblFile;
+    }
+
+    @Override
+    public JTable getTblData()
+    {
+        return tblData;
+    }
+
+    @Override
+    public void setLastDirectory(String path)
+    {
+        pref.put("LAST_DIRECTORY", path);
+    }
+
+    @Override
+    public InputDataframe getFrmInputData()
+    {
+        return frmInputData;
     }
 
     @Override

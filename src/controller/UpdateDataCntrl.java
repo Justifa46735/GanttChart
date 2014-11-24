@@ -9,6 +9,7 @@
  */
 package controller;
 
+import java.util.List;
 import model.TaskData;
 import java.util.Observable;
 import java.util.Observer;
@@ -31,6 +32,11 @@ public class UpdateDataCntrl
 {
     private final String[] columnNames;
     private JFreeChart chart;
+    private String yAxisLabel;
+    private String xAxisLabel;
+    private boolean legend;
+    private boolean tooltips;
+    private boolean urls;
 
     public UpdateDataCntrl(InterfaceView view, InterfaceModel model)
     {
@@ -41,12 +47,30 @@ public class UpdateDataCntrl
         columnNames[1] = "Start";
         columnNames[2] = "Ende";
         columnNames[3] = "Dauer";
+
+        yAxisLabel = "Tasks";
+        xAxisLabel = "Date";
+
+        legend = true;
+        tooltips = true;
+        urls = false;
     }
 
     @Override
     public void registerEvents()
     {
         model.addBeobachter(this);
+    }
+
+    @Override
+    public void chartChanged(ChartChangeEvent cce)
+    {
+        String tmp = chart.getTitle().getText();
+
+        if (tmp.compareTo(model.getProjektName()) != 0)
+        {
+            model.setProjektName(tmp);
+        }
     }
 
     @Override
@@ -75,11 +99,11 @@ public class UpdateDataCntrl
 
             //collection.add(s1);
             //collection.add(s1);
-            updateChart(collection, model.getProjektName());
+            updateChart(collection);
         }
         else
         {
-            updateChart(null, model.getProjektName());
+            updateChart(null);
         }
     }
 
@@ -107,36 +131,9 @@ public class UpdateDataCntrl
         view.getTblData().setModel(newTabelModel);
     }
 
-    @Override
-    public void chartChanged(ChartChangeEvent cce)
+    private void updateChart(IntervalCategoryDataset dataset)
     {
-        String projektName = chart.getTitle().getText();
-
-        if (projektName.compareTo(model.getProjektName()) != 0)
-        {
-            model.setProjektName(projektName);
-            System.out.println(model.getProjektName());
-
-            if (!view.getBtnInsertTask().isEnabled())
-            {
-                view.getLblFile().setText("File");
-                view.getBtnSave().setEnabled(true);
-                view.getMnuSave().setEnabled(true);
-                view.getBtnSaveAs().setEnabled(false);
-                view.getMnuSaveAs().setEnabled(false);
-                view.getBtnInsertTask().setEnabled(true);
-                view.getBtnDeleteTask().setEnabled(true);
-                view.getMnuInsertTask().setEnabled(true);
-                view.getMnuDeleteTask().setEnabled(true);
-                view.getMnuProperties().setEnabled(true);
-                view.getTblData().setFillsViewportHeight(true);
-            }
-        }
-    }
-
-    private void updateChart(IntervalCategoryDataset dataset, String title)
-    {
-        chart = ChartFactory.createGanttChart(title, "Tasks", "Date", dataset, true, true, false);
+        chart = ChartFactory.createGanttChart(model.getProjektName(), yAxisLabel, xAxisLabel, dataset, legend, tooltips, urls);
         view.getChartPanel().setChart(chart);
         chart.addChangeListener(this);
         chart.setAntiAlias(true);

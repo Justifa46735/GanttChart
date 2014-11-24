@@ -12,7 +12,6 @@ package view;
 import java.awt.event.WindowListener;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -49,25 +48,13 @@ public interface InterfaceView
 
     public abstract JFileChooser getFileChooser();
 
-    public abstract JButton getBtnAbbrechen();
-
     public abstract JButton getBtnSave();
 
     public abstract JButton getBtnSaveAs();
 
-    public abstract JButton getBtnInsert();
-
     public abstract JButton getBtnNew();
 
     public abstract JButton getBtnOpen();
-
-    public abstract JFormattedTextField getFtfTaskDauer();
-
-    public abstract JFormattedTextField getFtfTaskEnde();
-
-    public abstract JFormattedTextField getFtfTaskStart();
-
-    public abstract JTextField getTfTaskName();
 
     public abstract JLabel getLblFile();
 
@@ -95,7 +82,7 @@ public interface InterfaceView
 
     public abstract JMenuItem getMnuDeleteTask();
 
-    public abstract JFrame getFrmInputData();
+    public abstract InputDataframe getFrmInputData();
 
     public abstract JMenuItem getMnuProperties();
 

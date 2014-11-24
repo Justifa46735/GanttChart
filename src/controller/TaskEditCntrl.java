@@ -39,11 +39,11 @@ public class TaskEditCntrl
             if (row != -1)
             {
                 view.getFrmInputData().setTitle("Task bearbeiten");
-                view.getBtnInsert().setText("Bearbeiten");
-                view.getTfTaskName().setText(model.getTaskArray().get(row).getName());
-                view.getFtfTaskStart().setText(model.getTaskArray().get(row).getStartString());
-                view.getFtfTaskEnde().setText(model.getTaskArray().get(row).getEndString());
-                view.getFtfTaskDauer().setText(String.valueOf(model.getTaskArray().get(row).getHoursBetween()) + " h");
+                view.getFrmInputData().getBtnInsert().setText("Bearbeiten");
+                view.getFrmInputData().getTfTaskName().setText(model.getTaskArray().get(row).getName());
+                view.getFrmInputData().getFtfTaskStart().setText(model.getTaskArray().get(row).getStartString());
+                view.getFrmInputData().getFtfTaskEnde().setText(model.getTaskArray().get(row).getEndString());
+                view.getFrmInputData().getFtfTaskDauer().setText(String.valueOf(model.getTaskArray().get(row).getHoursBetween()) + " h");
                 view.getFrmInputData().setVisible(true);
             }
         }

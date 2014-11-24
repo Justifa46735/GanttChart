@@ -26,7 +26,7 @@ public class PropAbortCntrl
     @Override
     public void registerEvents()
     {
-        view.getBtnPropAbbrechen().addActionListener(this);
+        view.getFrmProperties().getBtnPropAbbrechen().addActionListener(this);
     }
 
     @Override

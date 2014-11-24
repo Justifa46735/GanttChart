@@ -32,9 +32,9 @@ public class OpenPropFrmCntrl
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        view.getTfPropProjektName().setText(model.getProjektName());
-        view.getTfPropProjektName().grabFocus();
-        view.getTfPropProjektName().selectAll();
+        view.getFrmProperties().getTfPropProjektName().setText(model.getProjektName());
+        view.getFrmProperties().getTfPropProjektName().grabFocus();
+        view.getFrmProperties().getTfPropProjektName().selectAll();
         view.getFrmProperties().setVisible(true);
     }
 }

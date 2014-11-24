@@ -26,13 +26,13 @@ public class PropConfirmCntrl
     @Override
     public void registerEvents()
     {
-        view.getBtnPropBestaetigen().addActionListener(this);
+        view.getFrmProperties().getBtnPropBestaetigen().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        String newProjName = view.getTfPropProjektName().getText();
+        String newProjName = view.getFrmProperties().getTfPropProjektName().getText();
         model.setProjektName(newProjName);
         view.getFrmProperties().setVisible(false);
     }

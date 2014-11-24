@@ -12,12 +12,10 @@ package view;
 import java.awt.event.WindowListener;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import org.jfree.chart.ChartPanel;
 
 public interface InterfaceView
@@ -86,13 +84,7 @@ public interface InterfaceView
 
     public abstract JMenuItem getMnuProperties();
 
-    public JFrame getFrmProperties();
-
-    public JButton getBtnPropAbbrechen();
-
-    public JButton getBtnPropBestaetigen();
-
-    public JTextField getTfPropProjektName();
+    public PropertiesFrame getFrmProperties();
 
     public JScrollPane getScrPnlMainFrmRight();
 

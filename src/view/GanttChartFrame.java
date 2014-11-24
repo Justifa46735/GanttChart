@@ -2,15 +2,11 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.prefs.Preferences;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -20,15 +16,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
-import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 import org.jfree.chart.ChartPanel;
 
 public class GanttChartFrame
@@ -42,13 +34,10 @@ public class GanttChartFrame
     private final String[] columnNames;
 
     private InputDataframe frmInputData;
-    private JFrame frmProperties;
+    private PropertiesFrame frmProperties;
     private JMenuBar mbMainMenuBar;
     private JToolBar tbMainToolBar;
     private JFileChooser fileChooser;
-    private JPanel pnlPropertiesSouth;
-    private JPanel pnlPropertiesWest;
-    private JPanel pnlPropertiesCenter;
     private JSplitPane splPnlMainFrmCenter;
     private JScrollPane scrPnlMainFrmLeft;
     private JScrollPane scrPnlMainFrmRight;
@@ -61,11 +50,7 @@ public class GanttChartFrame
     private JButton btnZoomIn;
     private JButton btnInsertTask;
     private JButton btnDeleteTask;
-    private JButton btnPropAbbrechen;
-    private JButton btnPropBestaetigen;
-    private JTextField tfPropProjektName;
     private JLabel lblFile;
-    private JLabel lblProjektName;
     private JMenu mnuAnsicht;
     private JMenu mnuBearbeiten;
     private JMenu mnuDatei;
@@ -82,8 +67,6 @@ public class GanttChartFrame
     private JMenuItem mnuInsertTask;
     private JMenuItem mnuDeleteTask;
     private JMenuItem mnuProperties;
-    private Box.Filler flTextFieldProjName;
-    private Box.Filler flLblProjName;
     private JTable tblData;
 
     public GanttChartFrame()
@@ -108,16 +91,11 @@ public class GanttChartFrame
     private void initComponents()
     {
         frmInputData = new InputDataframe();
-        frmProperties = new JFrame();
+        frmProperties = new PropertiesFrame();
         mbMainMenuBar = new JMenuBar();
         tbMainToolBar = new JToolBar();
         fileChooser = new JFileChooser();
-        pnlPropertiesSouth = new JPanel();
-        pnlPropertiesWest = new JPanel();
-        pnlPropertiesCenter = new JPanel();
-        tfPropProjektName = new JTextField();
         lblFile = new JLabel();
-        lblProjektName = new JLabel();
         btnNew = new JButton();
         btnSave = new JButton();
         btnSaveAs = new JButton();
@@ -127,8 +105,6 @@ public class GanttChartFrame
         btnZoomNormal = new JButton();
         btnInsertTask = new JButton();
         btnDeleteTask = new JButton();
-        btnPropAbbrechen = new JButton();
-        btnPropBestaetigen = new JButton();
         splPnlMainFrmCenter = new JSplitPane();
         scrPnlMainFrmLeft = new JScrollPane();
         scrPnlMainFrmRight = new JScrollPane();
@@ -148,8 +124,6 @@ public class GanttChartFrame
         mnuInsertTask = new JMenuItem();
         mnuDeleteTask = new JMenuItem();
         mnuProperties = new JMenuItem();
-        flTextFieldProjName = new Box.Filler(new Dimension(0, 10), new Dimension(0, 10), new Dimension(32767, 10));
-        flLblProjName = new Box.Filler(new Dimension(0, 10), new Dimension(0, 10), new Dimension(32767, 10));
         tblData = new JTable();
         pnlChartPanel = new ChartPanel(null);
 
@@ -307,38 +281,7 @@ public class GanttChartFrame
         frmInputData.setLocationRelativeTo(this);
 
         // ***** properties window
-        frmProperties.setTitle("Eigenschaften");
-        frmProperties.getContentPane().setLayout(new BorderLayout());
-        frmProperties.setSize(330, 160);
-        frmProperties.setDefaultCloseOperation(HIDE_ON_CLOSE);
         frmProperties.setLocationRelativeTo(this);
-
-        frmProperties.getContentPane().add(pnlPropertiesWest, BorderLayout.WEST);
-        frmProperties.getContentPane().add(pnlPropertiesSouth, BorderLayout.SOUTH);
-        frmProperties.getContentPane().add(pnlPropertiesCenter, BorderLayout.CENTER);
-
-        pnlPropertiesWest.setLayout(new BoxLayout(pnlPropertiesWest, BoxLayout.LINE_AXIS));
-        pnlPropertiesWest.add(flLblProjName);
-        pnlPropertiesWest.add(lblProjektName);
-        lblProjektName.setHorizontalAlignment(SwingConstants.CENTER);
-        lblProjektName.setText("   Projektname    ");
-        lblProjektName.setFont(new Font("Ubuntu", 0, 18));
-
-        pnlPropertiesSouth.setLayout(new FlowLayout());
-        pnlPropertiesSouth.add(btnPropAbbrechen);
-        pnlPropertiesSouth.add(btnPropBestaetigen);
-        btnPropAbbrechen.setText("Abbrechen");
-        btnPropBestaetigen.setText("Bestätigen");
-        btnPropAbbrechen.setFont(new Font("Ubuntu", 0, 16));
-        btnPropBestaetigen.setFont(new Font("Ubuntu", 0, 16));
-
-        pnlPropertiesCenter.setLayout(new BoxLayout(pnlPropertiesCenter, BoxLayout.LINE_AXIS));
-        pnlPropertiesCenter.add(flTextFieldProjName);
-        pnlPropertiesCenter.add(tfPropProjektName);
-        tfPropProjektName.setHorizontalAlignment(JTextField.LEFT);
-        tfPropProjektName.setMaximumSize(new Dimension(2147483647, 30));
-        tfPropProjektName.setMinimumSize(new Dimension(200, 30));
-        tfPropProjektName.setFont(new Font("Ubuntu", 0, 18));
     }
 
     @Override
@@ -516,27 +459,9 @@ public class GanttChartFrame
     }
 
     @Override
-    public JFrame getFrmProperties()
+    public PropertiesFrame getFrmProperties()
     {
         return frmProperties;
-    }
-
-    @Override
-    public JButton getBtnPropAbbrechen()
-    {
-        return btnPropAbbrechen;
-    }
-
-    @Override
-    public JButton getBtnPropBestaetigen()
-    {
-        return btnPropBestaetigen;
-    }
-
-    @Override
-    public JTextField getTfPropProjektName()
-    {
-        return tfPropProjektName;
     }
 
     @Override
